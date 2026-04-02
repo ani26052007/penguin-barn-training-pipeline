@@ -1,135 +1,297 @@
+"""
+actor.py
+========
+ReinFlow rollout actor using ros_jackal's gym environment.
+
+The gym env (motion_control_continuous_laser-v0) handles everything:
+  - ROS/Gazebo launch and reset
+  - LiDAR observation
+  - Collision detection via info["collision"]
+  - Episode termination
+  - ShapingRewardWrapper adds progress reward
+
+This script only needs to:
+  1. Wrap obs into (8, 720) rolling window + polar goal
+  2. Sample action via ReinFlow noisy ODE (stores log_prob for PPO)
+  3. Store transitions in replay buffer
+  4. Flush to shared buffer folder periodically
+
+Usage (inside Singularity container):
+  python actor.py --id 0 --num_actors 10 --config configs/reinflow.yaml
+"""
+
 import os
-import yaml
-import pickle
-from os.path import join, dirname, abspath, exists
 import sys
-import torch
-import gym
-import numpy as np
-import random
 import time
-import rospy
 import argparse
-import logging
+import math
+from collections import deque
 
-from train import initialize_policy
-from envs import registration
-from envs.wrappers import StackFrame
+import numpy as np
+import torch
+import yaml
+import gym
 
-BUFFER_PATH = os.getenv('BUFFER_PATH')
-if not BUFFER_PATH:
-    BUFFER_PATH = "local_buffer"
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import envs.registration   # registers motion_control_continuous_laser-v0
+from envs.wrappers import ShapingRewardWrapper
 
-# add path to the plugins to the GAZEBO_PLUGIN_PATH
-gpp = os.getenv('GAZEBO_PLUGIN_PATH') if os.getenv('GAZEBO_PLUGIN_PATH') is not None else ""
-wd = os.getcwd()
-os.environ['GAZEBO_PLUGIN_PATH'] = os.path.join(wd, "jackal_helper/plugins/build") + ":" + gpp
-rospy.logwarn(os.environ['GAZEBO_PLUGIN_PATH'])
+from barn_nav_model import (BARNNavModel, ReinFlowNoiseNet,
+                             CONTEXT_DIM, reinflow_forward)
+from rl_algos.reinflow import ReplayBuffer
 
-def initialize_actor(id):
-    rospy.logwarn(">>>>>>>>>>>>>>>>>> actor id: %s <<<<<<<<<<<<<<<<<<" %(str(id)))
-    assert os.path.exists(BUFFER_PATH), BUFFER_PATH
-    actor_path = join(BUFFER_PATH, 'actor_%s' %(str(id)))
 
-    if not exists(actor_path):
-        os.mkdir(actor_path) # path to store all the trajectories
+# ── Args ──────────────────────────────────────────────────────────────────────
 
-    f = None
-    c = 0
-    while f is None and c < 10:
-        c += 1
-        try:
-            f = open(join(BUFFER_PATH, 'config.yaml'), 'r')
-        except:
-            rospy.logwarn("wait for critor to be initialized")
-            time.sleep(2)
+def parse_args():
+    p = argparse.ArgumentParser()
+    p.add_argument('--id',          type=int, default=0)
+    p.add_argument('--num_actors',  type=int, default=10)
+    p.add_argument('--config',      type=str, default='configs/reinflow.yaml')
+    p.add_argument('--buffer_path', type=str,
+                   default=os.environ.get('BUFFER_FOLDER', 'local_buffer'))
+    return p.parse_args()
 
-    config = yaml.load(f, Loader=yaml.FullLoader)
 
-    return config
+def load_config(path):
+    with open(path) as f:
+        return yaml.safe_load(f)
 
-def load_policy(policy):
-    f = True
-    policy_name = "policy"
-    while f:
-        try:
-            if not os.path.exists(join(BUFFER_PATH, "%s_copy_actor" %(policy_name))):
-                policy.load(BUFFER_PATH, policy_name)
-            f = False
-        except FileNotFoundError:
-            time.sleep(1)
-        except:
-            logging.exception('')
-            time.sleep(1)
-    return policy
 
-def write_buffer(traj, id):
-    file_names = os.listdir(join(BUFFER_PATH, 'actor_%s' %(str(id))))
-    if len(file_names) == 0:
-        ep = 0
-    else:
-        eps = [int(f.split("_")[-1].split(".pickle")[0]) for f in file_names]  # last index under this folder
-        sorted(eps)
-        ep = eps[-1] + 1
-    if len(file_names) < 10:
-        with open(join(BUFFER_PATH, 'actor_%s' %(str(id)), 'traj_%d.pickle' %(ep)), 'wb') as f:
-            try:
-                pickle.dump(traj, f)
-            except OSError as e:
-                logging.exception('Failed to dump the trajectory! %s', e)
-                pass
-    return ep
+# ── Rolling LiDAR window ──────────────────────────────────────────────────────
 
-def get_world_name(config, id):
-    if len(config["container_config"]["worlds"]) < config["container_config"]["num_actor"]:
-        duplicate_time = config["container_config"]["num_actor"] // len(config["container_config"]["worlds"]) + 1
-        worlds = config["container_config"]["worlds"] * duplicate_time
-    else:  # if num_actors < num_worlds, then each actor will rollout in a random world
-        worlds = config["container_config"]["worlds"].copy()
-        random.shuffle(worlds)
-        worlds = worlds[:config["container_config"]["num_actor"]]
-    world_name = worlds[id]
-    if isinstance(world_name, int):
-        world_name = "BARN/world_%d.world" %(world_name)
-    return world_name
+class LiDARBuffer:
+    def __init__(self, seq_len=8, num_rays=720):
+        self.seq_len  = seq_len
+        self.num_rays = num_rays
+        self.buf      = deque(maxlen=seq_len)
 
-def _debug_print_robot_status(env, count, rew, actions):
-    p = env.gazebo_sim.get_model_state().pose.position
-    print(actions)
-    print('current step: %d, X position: %f(world_frame), Y position: %f(world_frame), rew: %f' %(count, p.x, p.y, rew))
+    def push(self, scan):
+        s = np.array(scan, dtype=np.float32)
+        s = np.clip(s, 0.0, 10.0)
+        self.buf.append(s)
 
-def main(args):
-    id = args.id
-    config = initialize_actor(id)
-    env_config = config['env_config']
-    world_name = get_world_name(config, id)
-    env_config["kwargs"]["world_name"] = world_name
-    env = gym.make(env_config["env_id"], **env_config["kwargs"])
-    env = StackFrame(env, stack_frame=env_config["stack_frame"])
+    def warmup(self):
+        """Fill buffer by repeating first scan."""
+        if len(self.buf) >= 1:
+            first = self.buf[-1].copy()
+            while len(self.buf) < self.seq_len:
+                self.buf.appendleft(first)
 
-    policy, _ = initialize_policy(config, env, init_buffer=False, device="cpu")
-    num_ep = 0
+    def get(self):
+        """Returns (1, seq_len, num_rays) float32 numpy."""
+        return np.stack(list(self.buf))[np.newaxis].astype(np.float32)
 
-    for _ in range(args.num_trajs):
+    def reset(self):
+        self.buf.clear()
+
+
+# ── Goal vector from env ──────────────────────────────────────────────────────
+
+def get_polar_goal(env):
+    """
+    Returns [distance_m, bearing_rad] in robot frame.
+    Uses Gazebo ground truth position — same as ros_bridge.py.
+    """
+    state = env.gazebo_sim.get_model_state()
+    pos   = state.pose.position
+    ori   = state.pose.orientation
+
+    rx, ry = pos.x, pos.y
+    ox, oy, oz, ow = ori.x, ori.y, ori.z, ori.w
+    yaw = math.atan2(2*(ow*oz + ox*oy), 1 - 2*(oy*oy + oz*oz))
+
+    # Goal in world frame
+    gx = env.init_position[0] + env.goal_position[0]
+    gy = env.init_position[1] + env.goal_position[1]
+
+    dx   = gx - rx
+    dy   = gy - ry
+    dist = math.sqrt(dx**2 + dy**2)
+    bear = math.atan2(dy, dx) - yaw
+    bear = math.atan2(math.sin(bear), math.cos(bear))   # wrap to [-π,π]
+
+    return np.array([dist, bear], dtype=np.float32)
+
+
+# ── Policy I/O ────────────────────────────────────────────────────────────────
+
+def load_policy(buffer_path, device='cpu'):
+    path = os.path.join(buffer_path, 'policy_latest.pt')
+    if not os.path.exists(path):
+        return None, None
+    try:
+        ckpt      = torch.load(path, map_location=device)
+        model     = BARNNavModel()
+        noise_net = ReinFlowNoiseNet(context_dim=CONTEXT_DIM)
+        model.load_state_dict(ckpt['model_state'])
+        noise_net.load_state_dict(ckpt['noise_net_state'])
+        model.to(device).eval()
+        noise_net.to(device).eval()
+        return model, noise_net
+    except Exception as e:
+        print(f"[Actor] Could not load policy: {e}")
+        return None, None
+
+
+# ── World assignment ──────────────────────────────────────────────────────────
+
+def get_my_worlds(actor_id, num_actors, world_range):
+    lo, hi       = world_range
+    per_actor    = max(1, (hi - lo) // num_actors)
+    start        = lo + actor_id * per_actor
+    end          = min(hi, start + per_actor)
+    worlds       = list(range(start, end))
+    return worlds if worlds else list(range(lo, hi))
+
+
+# ── Main ──────────────────────────────────────────────────────────────────────
+
+def main():
+    args   = parse_args()
+    cfg    = load_config(args.config)
+    device = torch.device('cpu')   # actors always on CPU inside container
+
+    os.makedirs(args.buffer_path, exist_ok=True)
+
+    num_rays   = cfg.get('num_rays', 720)
+    seq_len    = cfg.get('seq_len', 8)
+    flow_steps = cfg.get('flow_steps', 10)
+    flush_every = cfg.get('flush_every', 200)
+    v_max = cfg.get('v_max', 2.0);  v_min = cfg.get('v_min', -2.0)
+    w_max = cfg.get('w_max', 2.0);  w_min = cfg.get('w_min', -2.0)
+
+    my_worlds = get_my_worlds(args.id, args.num_actors,
+                              cfg.get('world_range', [0, 250]))
+    print(f"[Actor {args.id}] Worlds {my_worlds[0]}–{my_worlds[-1]}")
+
+    # Wait for learner to publish initial policy
+    model, noise_net = None, None
+    while model is None:
+        model, noise_net = load_policy(args.buffer_path, device)
+        if model is None:
+            print(f"[Actor {args.id}] Waiting for policy_latest.pt ...")
+            time.sleep(5.0)
+    print(f"[Actor {args.id}] Policy ready")
+
+    local_buf  = ReplayBuffer(capacity=10_000, seq_len=seq_len,
+                              num_rays=num_rays, device='cpu')
+    lidar_buf  = LiDARBuffer(seq_len=seq_len, num_rays=num_rays)
+    episode    = 0
+
+    while True:
+        world_idx  = my_worlds[episode % len(my_worlds)]
+        world_name = f'BARN/world_{world_idx}.world'
+
+        # ── Build env ─────────────────────────────────────────────────────────
+        env = gym.make(
+            id='motion_control_continuous_laser-v0',
+            world_name=world_name,
+            gui=False,
+            init_position=[-2.25, 3, np.pi / 2],
+            goal_position=[0, 10, 0],
+            time_step=0.2,
+            slack_reward=0,
+            success_reward=float(cfg.get('r_goal', 20.0)),
+            collision_reward=float(cfg.get('r_collision', -4.0)),
+            failure_reward=0,
+            max_collision=1,
+        )
+        env = ShapingRewardWrapper(env)
+
         obs = env.reset()
-        traj = []
-        done = False
-        policy = load_policy(policy)
+        lidar_buf.reset()
+
+        # First scan — warm up window
+        scan = obs[:num_rays].astype(np.float32)
+        lidar_buf.push(scan)
+        lidar_buf.warmup()
+
+        done        = False
+        ep_reward   = 0.0
+        step_count  = 0
+        ep_buf      = []
+
+        # ── Rollout ───────────────────────────────────────────────────────────
         while not done:
-            actions = policy.select_action(obs)
-            obs_new, rew, done, info = env.step(actions)
-            info["world"] = world_name
-            traj.append([obs, actions, rew, done, info])
-            obs = obs_new
-        num_ep += 1
-        write_buffer(traj, id)
-    
-    print(">>>>>>>>>>>>>>>>>>>>>>>>> actor_id: %d, world_idx: %s, num_episode: %d" %(id, world_name, num_ep))
+            scan      = obs[:num_rays].astype(np.float32)
+            lidar_buf.push(scan)
+
+            lidar_seq = lidar_buf.get()              # (1, 8, 720)
+            goal_vec  = get_polar_goal(env)           # (2,)
+            goal_in   = goal_vec[np.newaxis]          # (1, 2)
+
+            # ReinFlow action sampling
+            with torch.no_grad():
+                act_t, logp_t, _ = reinflow_forward(
+                    model, noise_net,
+                    torch.from_numpy(lidar_seq),
+                    torch.from_numpy(goal_in),
+                    n_steps=flow_steps
+                )
+
+            action   = act_t.numpy()[0]    # (2,)
+            log_prob = logp_t.numpy()[0]   # (1,)
+
+            action_clipped = np.array([
+                np.clip(action[0], v_min, v_max),
+                np.clip(action[1], w_min, w_max),
+            ], dtype=np.float32)
+
+            # Step
+            next_obs, reward, done, info = env.step(action_clipped)
+
+            # Next observation
+            next_scan = next_obs[:num_rays].astype(np.float32)
+            lidar_buf.push(next_scan)
+            next_lidar_seq = lidar_buf.get()         # (1, 8, 720)
+            next_goal_vec  = get_polar_goal(env)
+            next_goal_in   = next_goal_vec[np.newaxis]
+
+            ep_buf.append((
+                lidar_seq[0],         # (8, 720)
+                goal_in[0],           # (2,)
+                action_clipped,       # (2,)
+                next_lidar_seq[0],    # (8, 720)
+                next_goal_in[0],      # (2,)
+                np.float32(reward),
+                np.float32(float(done)),
+                log_prob,             # (1,)
+            ))
+
+            ep_reward  += reward
+            step_count += 1
+            obs         = next_obs
+
+        # ── End of episode ────────────────────────────────────────────────────
+        collision = info.get('collision', 0)
+        status    = '✓ SUCCESS' if (not collision and done) else (
+                    '✗ COLLISION' if collision else '⏱ TIMEOUT')
+        print(f"[Actor {args.id}] Ep {episode:4d} | World {world_idx:3d} | "
+              f"{step_count:3d} steps | R={ep_reward:+6.1f} | {status}")
+
+        env.close()
+
+        # Store transitions
+        for (l, g, a, nl, ng, r, d, lp) in ep_buf:
+            local_buf.add(l, g, a, nl, ng, r, d, lp)
+
+        # Flush to shared disk
+        if len(local_buf) >= flush_every:
+            out = os.path.join(args.buffer_path,
+                               f'actor_{args.id:02d}_ep{episode:05d}.pt')
+            local_buf.save(out)
+            local_buf = ReplayBuffer(capacity=10_000, seq_len=seq_len,
+                                     num_rays=num_rays, device='cpu')
+            print(f"[Actor {args.id}] Flushed → {out}")
+
+        # Reload latest policy (async — fine to be a few episodes behind)
+        new_model, new_noise = load_policy(args.buffer_path, device)
+        if new_model is not None:
+            model, noise_net = new_model, new_noise
+
+        episode += 1
+
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description = 'start an actor')
-    parser.add_argument('--id', dest='id', type = int, default = 1)
-    parser.add_argument('--num_trajs', dest='num_trajs', type = int, default = 5)
-
-    args = parser.parse_args()
-    main(args)
+    main()

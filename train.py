@@ -1,311 +1,275 @@
+"""
+train.py
+========
+ReinFlow learner — runs on GPU (lab machine), reads transitions from
+shared buffer folder written by actor.py processes.
+
+Async actor-learner architecture:
+  Actors (in Singularity): collect transitions → save to BUFFER_FOLDER/*.pt
+  Learner (this script):   read buffer files → update policy → save to
+                           BUFFER_FOLDER/policy_latest.pt
+
+Usage:
+  python train.py --config configs/reinflow.yaml --checkpoint iql_model_node_ready.pt
+"""
+
+import os
+import sys
+import copy
+import time
+import glob
 import argparse
 import yaml
-import numpy as np
-import gym
 from datetime import datetime
-from os.path import join, dirname, abspath, exists
-import sys
-import os
-import shutil
-import logging
-import collections
-import time
-import uuid
-from pprint import pformat
 
+import numpy as np
 import torch
-try:
-    import GPUtil
-    from tensorboardX import SummaryWriter
-except:
-    pass
+import torch.nn as nn
+from torch.utils.tensorboard import SummaryWriter
 
-from envs import registration
-from envs.wrappers import StackFrame
-from rl_algos import algo_class
-from rl_algos.net import *
-from rl_algos.base_rl_algo import ReplayBuffer
-from rl_algos.sac import GaussianActor
-from rl_algos.td3 import Actor, Critic #, TD3, ReplayBuffer
-from rl_algos.model_based import Model
-# from rl_algos.safe_td3 import SafeTD3
-from rl_algos.collector import ContainerCollector, LocalCollector, ClusterCollector
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from barn_nav_model import (BARNNavModel, ReinFlowNoiseNet,
+                             ValueHead, QHead, CONTEXT_DIM,
+                             load_barn_checkpoint)
+from rl_algos.reinflow import (update_critic, update_actor,
+                                polyak_update, ReplayBuffer)
 
-def initialize_config(config_path, save_path):
-    # Load the config files
-    with open(config_path, 'r') as f:
-        config = yaml.load(f, Loader=yaml.FullLoader)
 
-    config["env_config"]["save_path"] = save_path
-    config["env_config"]["config_path"] = config_path
+def parse_args():
+    p = argparse.ArgumentParser()
+    p.add_argument('--config',     type=str, default='configs/reinflow.yaml')
+    p.add_argument('--checkpoint', type=str, default=None,
+                   help='Path to IQL/BC checkpoint for warm-starting backbone')
+    p.add_argument('--resume',     type=str, default=None,
+                   help='Path to previous train.py checkpoint to resume from')
+    p.add_argument('--buffer_path', type=str,
+                   default=os.environ.get('BUFFER_FOLDER', 'local_buffer'))
+    return p.parse_args()
 
-    return config
 
-def initialize_logging(config):
-    env_config = config["env_config"]
-    training_config = config["training_config"]
+def load_config(path):
+    with open(path) as f:
+        return yaml.safe_load(f)
 
-    # Config logging
-    now = datetime.now()
-    string = now.strftime("%Y_%m_%d_%H_%M")
 
-    save_path = join(
-        env_config["save_path"], 
-        env_config["env_id"], 
-        training_config['algorithm'], 
-        string,
-        uuid.uuid4().hex[:4]
+def wait_for_buffer(buffer_path, min_transitions=1000, poll_interval=10.0):
+    """Block until enough transitions are in the buffer to start training."""
+    print(f"[Learner] Waiting for {min_transitions} transitions in buffer...")
+    while True:
+        buf_files = glob.glob(os.path.join(buffer_path, 'actor_*_buf_*.pt'))
+        total = sum(
+            torch.load(f, map_location='cpu')['size']
+            for f in buf_files
+            if os.path.exists(f)
+        )
+        if total >= min_transitions:
+            print(f"[Learner] Buffer ready: {total} transitions")
+            return
+        print(f"[Learner] Buffer: {total}/{min_transitions} transitions... waiting")
+        time.sleep(poll_interval)
+
+
+def load_all_buffer_files(buffer_path, replay_buffer):
+    """Load all actor buffer files into the shared replay buffer."""
+    buf_files = sorted(glob.glob(os.path.join(buffer_path, 'actor_*_buf_*.pt')))
+    loaded = 0
+    for f in buf_files:
+        try:
+            replay_buffer.load(f)
+            loaded += 1
+        except Exception as e:
+            print(f"[Learner] Warning: could not load {f}: {e}")
+    return loaded
+
+
+def save_policy(model, noise_net, buffer_path, step, cfg, extra=None):
+    """Save policy for actors to load. Also saves full training checkpoint."""
+    # Policy for actors (minimal)
+    policy_path = os.path.join(buffer_path, 'policy_latest.pt')
+    torch.save({
+        'model_state':     model.state_dict(),
+        'noise_net_state': noise_net.state_dict(),
+        'step':            step,
+    }, policy_path)
+
+    # Full checkpoint for resuming
+    if extra is not None:
+        ckpt_path = os.path.join(buffer_path, f'train_ckpt_step{step}.pt')
+        torch.save(extra, ckpt_path)
+        print(f"[Learner] Saved checkpoint → {ckpt_path}")
+
+
+def main():
+    args = parse_args()
+    cfg  = load_config(args.config)
+
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    print(f"[Learner] Device: {device}")
+
+    os.makedirs(args.buffer_path, exist_ok=True)
+    os.makedirs('logging', exist_ok=True)
+
+    run_name = datetime.now().strftime('%Y%m%d_%H%M%S')
+    writer   = SummaryWriter(f'logging/reinflow_{run_name}')
+
+    # ── Build models ──────────────────────────────────────────────────────────
+    model     = BARNNavModel().to(device)
+    noise_net = ReinFlowNoiseNet(context_dim=CONTEXT_DIM).to(device)
+    v_head    = ValueHead(context_dim=CONTEXT_DIM).to(device)
+    q_head    = QHead(context_dim=CONTEXT_DIM).to(device)
+
+    # Target networks (EMA copies — not updated by optimizer)
+    v_targ    = copy.deepcopy(v_head).to(device)
+    q_targ    = copy.deepcopy(q_head).to(device)
+    for p in v_targ.parameters(): p.requires_grad = False
+    for p in q_targ.parameters(): p.requires_grad = False
+
+    # ── Warm-start from IQL/BC checkpoint ─────────────────────────────────────
+    start_step = 0
+    if args.resume:
+        print(f"[Learner] Resuming from {args.resume}")
+        ckpt = torch.load(args.resume, map_location=device)
+        model.load_state_dict(ckpt['model_state'])
+        noise_net.load_state_dict(ckpt['noise_net_state'])
+        v_head.load_state_dict(ckpt['v_head_state'])
+        q_head.load_state_dict(ckpt['q_head_state'])
+        v_targ.load_state_dict(ckpt['v_targ_state'])
+        q_targ.load_state_dict(ckpt['q_targ_state'])
+        start_step = ckpt.get('step', 0)
+        print(f"[Learner] Resumed at step {start_step}")
+    elif args.checkpoint:
+        print(f"[Learner] Warm-starting backbone from {args.checkpoint}")
+        model = load_barn_checkpoint(args.checkpoint, device)
+        # V/Q heads random init — will be trained from scratch online
+        print("[Learner] V/Q heads: random init (will train from online data)")
+
+    # ── Optimizers ────────────────────────────────────────────────────────────
+    lr_actor = cfg.get('lr_actor', 3e-5)
+    lr_critic = cfg.get('lr_critic', 3e-4)
+    lr_noise  = cfg.get('lr_noise', 3e-4)
+
+    opt_actor = torch.optim.AdamW(model.parameters(),     lr=lr_actor,  weight_decay=1e-4)
+    opt_noise = torch.optim.AdamW(noise_net.parameters(), lr=lr_noise,  weight_decay=1e-4)
+    opt_v     = torch.optim.AdamW(v_head.parameters(),    lr=lr_critic, weight_decay=1e-4)
+    opt_q     = torch.optim.AdamW(q_head.parameters(),    lr=lr_critic, weight_decay=1e-4)
+
+    # ── Replay buffer ──────────────────────────────────────────────────────────
+    replay_buffer = ReplayBuffer(
+        capacity=cfg.get('buffer_capacity', 500_000),
+        device='cpu'
     )
-    print("    >>>> Saving to %s" % save_path)
-    if not exists(save_path):
-        os.makedirs(save_path)
-    writer = SummaryWriter(save_path)
 
-    shutil.copyfile(
-        env_config["config_path"], 
-        join(save_path, "config.yaml")    
-    )
+    # ── Training config ────────────────────────────────────────────────────────
+    batch_size     = cfg.get('batch_size', 256)
+    critic_warmup  = cfg.get('critic_warmup_steps', 5_000)
+    total_steps    = cfg.get('total_steps', 1_000_000)
+    save_every     = cfg.get('save_every', 5_000)
+    log_every      = cfg.get('log_every', 100)
+    buffer_refresh = cfg.get('buffer_refresh_steps', 1_000)
+    actor_updates  = cfg.get('actor_updates_per_critic', 1)
 
-    return save_path, writer
+    # ── Phase 1: Critic warmup ─────────────────────────────────────────────────
+    # Wait for initial data, then train V+Q before actor updates begin
+    wait_for_buffer(args.buffer_path,
+                    min_transitions=cfg.get('warmup_transitions', 2_000))
+    load_all_buffer_files(args.buffer_path, replay_buffer)
 
-def initialize_envs(config):
-    env_config = config["env_config"]
-    if env_config["collector"] != "local":
-        env_config["kwargs"]["init_sim"] = False
+    print(f"\n[Learner] === PHASE 1: Critic warmup ({critic_warmup} steps) ===")
+    for p in model.parameters(): p.requires_grad = False
+    for p in noise_net.parameters(): p.requires_grad = False
 
-    env = gym.make(env_config["env_id"], **env_config["kwargs"])
-    env = StackFrame(env, stack_frame=env_config["stack_frame"])
-    return env
+    for step in range(1, critic_warmup + 1):
+        if len(replay_buffer) < batch_size:
+            time.sleep(1.0)
+            load_all_buffer_files(args.buffer_path, replay_buffer)
+            continue
 
-def seed(config):
-    env_config = config["env_config"]
-    np.random.seed(env_config['seed'])
-    torch.manual_seed(env_config['seed'])
+        batch  = replay_buffer.sample(batch_size, device=device)
+        c_logs = update_critic(batch, model, v_head, q_head,
+                               v_targ, q_targ, opt_v, opt_q, cfg)
+        polyak_update(v_head, v_targ, tau=cfg.get('tau', 0.005))
+        polyak_update(q_head, q_targ, tau=cfg.get('tau', 0.005))
 
-def get_encoder(encoder_type, args):
-    if encoder_type == "mlp":
-        encoder=MLPEncoder(**args)
-    elif encoder_type == 'rnn':
-        encoder=RNNEncoder(**args)
-    elif encoder_type == 'cnn':
-        encoder=CNNEncoder(**args)
-    elif encoder_type == 'transformer':
-        encoder=TransformerEncoder(**args)
-    else:
-        raise Exception(f"[error] Unknown encoder type {encoder_type}!")
-    return encoder
+        if step % log_every == 0:
+            for k, v in c_logs.items():
+                writer.add_scalar(f'warmup/{k}', v, step)
+            print(f"  Warmup {step}/{critic_warmup} | "
+                  f"V={c_logs['v_mean']:.3f} Q={c_logs['q_mean']:.3f} "
+                  f"V_loss={c_logs['v_loss']:.4f}")
 
-def initialize_policy(config, env, init_buffer=True, device=None):
-    training_config = config["training_config"]
+        # Keep loading new actor data during warmup
+        if step % buffer_refresh == 0:
+            load_all_buffer_files(args.buffer_path, replay_buffer)
 
-    state_dim = env.observation_space.shape
-    action_dim = np.prod(env.action_space.shape)
-    action_space_low = env.action_space.low
-    action_space_high = env.action_space.high
+    for p in model.parameters(): p.requires_grad = True
+    for p in noise_net.parameters(): p.requires_grad = True
 
-    # find available device
-    if device is None:
-        devices = GPUtil.getAvailable(order = 'first', limit = 1, maxLoad = 0.8, maxMemory = 0.8, includeNan=False, excludeID=[], excludeUUID=[])
-        device = "cuda:%d" %(devices[0]) if len(devices) > 0 else "cpu"
-    print("    >>>> Running on device %s" %(device))
+    # ── Save initial policy so actors can start collecting ─────────────────────
+    save_policy(model, noise_net, args.buffer_path, step=0, cfg=cfg)
+    print("[Learner] Initial policy saved — actors can begin collecting")
 
-    encoder_type = training_config["encoder"]
-    encoder_args = {
-        'input_dim': state_dim[-1],  # np.prod(state_dim),
-        'num_layers': training_config['encoder_num_layers'],
-        'hidden_size': training_config['encoder_hidden_layer_size'],
-        'history_length': config["env_config"]["stack_frame"],
-    }
+    # ── Phase 2: Full ReinFlow training ───────────────────────────────────────
+    print(f"\n[Learner] === PHASE 2: ReinFlow training ({total_steps} steps) ===")
 
-    # initialize actor
-    input_dim = training_config['hidden_layer_size']
-    actor_class = GaussianActor if "SAC" in training_config["algorithm"] else Actor
-    actor = actor_class(
-        encoder=get_encoder(encoder_type, encoder_args),
-        head=MLP(input_dim, training_config['encoder_num_layers'], training_config['encoder_hidden_layer_size']),
-        action_dim=action_dim
-    ).to(device)
-    actor_optim = torch.optim.Adam(
-        actor.parameters(), 
-        lr=training_config['actor_lr']
-    )
-    # print("Total number of parameters: %d" %sum(p.numel() for p in actor.parameters()))
+    step = start_step
+    last_buffer_load = time.time()
 
-    # initialize critic
-    input_dim += np.prod(action_dim)
-    critic = Critic(
-        encoder=get_encoder(encoder_type, encoder_args),
-        head=MLP(input_dim, training_config['encoder_num_layers'], training_config['encoder_hidden_layer_size']),
-    ).to(device)
-    critic_optim = torch.optim.Adam(
-        critic.parameters(), 
-        lr=training_config['critic_lr']
-    )
+    while step < total_steps:
+        # Periodically reload buffer files from actors
+        if time.time() - last_buffer_load > 30.0:
+            loaded = load_all_buffer_files(args.buffer_path, replay_buffer)
+            last_buffer_load = time.time()
+            writer.add_scalar('buffer/size', len(replay_buffer), step)
 
-    # initialize agents
-    algo = training_config["algorithm"]
-    if "Dyna" in algo or "SMCP" in algo or "MBPO" in algo:
-        model = Model(
-            encoder=get_encoder(encoder_type, encoder_args),
-            head=MLP(input_dim, training_config['encoder_num_layers'], training_config['encoder_hidden_layer_size']),
-            state_dim=state_dim,
-            deterministic=training_config['deterministic']
-        ).to(device)
-        model_optim = torch.optim.Adam(
-            model.parameters(), 
-            lr=training_config['model_lr']
-        )
-        policy = algo_class[algo](
-            model, model_optim,
-            actor, actor_optim,
-            critic, critic_optim,
-            action_range=[action_space_low, action_space_high],
-            device=device,
-            **training_config["policy_args"]
-        )
-    elif "Safe" in algo:
-        safe_critic = Critic(
-            encoder=get_encoder(encoder_type, encoder_args),
-            head=MLP(input_dim, training_config['encoder_num_layers'], training_config['encoder_hidden_layer_size']),
-        ).to(device)
-        safe_critic_optim = torch.optim.Adam(
-            safe_critic.parameters(), 
-            lr=training_config['critic_lr']
-        )
-        policy = algo_class[algo](
-            safe_critic, safe_critic_optim,
-            actor, actor_optim,
-            critic, critic_optim,
-            action_range=[action_space_low, action_space_high],
-            device=device,
-            **training_config["policy_args"]
-        )
-    else:
-        policy = algo_class[algo](
-            actor, actor_optim,
-            critic, critic_optim,
-            action_range=[action_space_low, action_space_high],
-            device=device,
-            **training_config["policy_args"]
-        )
-    
-    if init_buffer:
-        replay_buffer = ReplayBuffer(
-            state_dim, action_dim, training_config['buffer_size'],
-            device=device,
-            reward_norm=False  # config['training_config']["reward_norm"]
-        )
-    else:
-        replay_buffer = None
+        if len(replay_buffer) < batch_size:
+            time.sleep(2.0)
+            continue
 
-    return policy, replay_buffer
+        # ── Critic update ──────────────────────────────────────────────────────
+        batch  = replay_buffer.sample(batch_size, device=device)
+        c_logs = update_critic(batch, model, v_head, q_head,
+                               v_targ, q_targ, opt_v, opt_q, cfg)
+        polyak_update(v_head, v_targ, tau=cfg.get('tau', 0.005))
+        polyak_update(q_head, q_targ, tau=cfg.get('tau', 0.005))
 
-def train(env, policy, replay_buffer, config):
-    env_config = config["env_config"]
-    training_config = config["training_config"]
+        # ── Actor update (ReinFlow PPO) ────────────────────────────────────────
+        for _ in range(actor_updates):
+            batch  = replay_buffer.sample(batch_size, device=device)
+            a_logs = update_actor(batch, model, noise_net,
+                                  v_targ, q_targ,
+                                  opt_actor, opt_noise, cfg)
 
-    save_path, writer = initialize_logging(config)
-    print("    >>>> initialized logging")
-    
-    if env_config['collector'] == 'container':
-        collector = ContainerCollector(policy, env, replay_buffer, config)
-    elif env_config['collector'] == 'local':
-        collector = LocalCollector(policy, env, replay_buffer)
-    elif env_config['collector'] == 'cluster':
-        collector = ClusterCollector(policy, env, replay_buffer, config)
-    else:
-        raise ValueError
+        step += 1
 
-    training_args = training_config["training_args"]
-    print("    >>>> Pre-collect experience")
-    collector.collect(n_steps=training_config['pre_collect'])
-    print("    >>>> Start training")
+        # ── Logging ───────────────────────────────────────────────────────────
+        if step % log_every == 0:
+            for k, v_val in {**c_logs, **a_logs}.items():
+                writer.add_scalar(f'train/{k}', v_val, step)
+            print(f"  Step {step:6d} | "
+                  f"V={c_logs['v_mean']:+.3f} "
+                  f"Q={c_logs['q_mean']:+.3f} "
+                  f"actor_loss={a_logs['actor_loss']:+.4f} "
+                  f"ratio={a_logs['ratio_mean']:.3f} "
+                  f"adv={a_logs['adv_mean']:+.3f} "
+                  f"buf={len(replay_buffer):,}")
 
-    n_steps = 0
-    n_iter = 0
-    n_ep = 0
-    epinfo_buf = collections.deque(maxlen=300)
-    world_ep_buf = collections.defaultdict(lambda: collections.deque(maxlen=20))
-    t0 = time.time()
-    
-    while n_steps < training_args["max_step"]:
-        # Linear decaying exploration noise from "start" -> "end"
-        if "TD3" in training_config["algorithm"]:
-            policy.exploration_noise = \
-                - (training_config["exploration_noise_start"] - training_config["exploration_noise_end"]) \
-                *  n_steps / training_args["max_step"] + training_config["exploration_noise_start"]
-        steps, epinfo = collector.collect(n_steps=training_args["collect_per_step"])
-        
-        n_steps += steps
-        n_iter += 1
-        n_ep += len(epinfo)
-        epinfo_buf.extend(epinfo)
-        for d in epinfo:
-            world = d["world"].split("/")[-1]
-            world_ep_buf[world].append(d)
+        # ── Save policy for actors ─────────────────────────────────────────────
+        if step % save_every == 0:
+            extra = {
+                'model_state':     model.state_dict(),
+                'noise_net_state': noise_net.state_dict(),
+                'v_head_state':    v_head.state_dict(),
+                'q_head_state':    q_head.state_dict(),
+                'v_targ_state':    v_targ.state_dict(),
+                'q_targ_state':    q_targ.state_dict(),
+                'step':            step,
+            }
+            save_policy(model, noise_net, args.buffer_path, step, cfg, extra)
+            writer.add_scalar('train/step_saved', step, step)
 
-        loss_infos = []
-        for _ in range(training_args["update_per_step"]):
-            loss_info = policy.train(replay_buffer, training_args["batch_size"])
-            loss_infos.append(loss_info)
+    print(f"\n[Learner] Training complete at step {step}")
+    writer.close()
 
-        loss_info = {}
-        for k in loss_infos[0].keys():
-            loss_info[k] = np.mean([li[k] for li in loss_infos if li[k] is not None])
 
-        t1 = time.time()
-        log = {
-            "Episode_return": np.mean([epinfo["ep_rew"] for epinfo in epinfo_buf]),
-            "Episode_length": np.mean([epinfo["ep_len"] for epinfo in epinfo_buf]),
-            "Success": np.mean([epinfo["success"] for epinfo in epinfo_buf]),
-            "Time": np.mean([epinfo["ep_time"] for epinfo in epinfo_buf]),
-            "Collision": np.mean([epinfo["collision"] for epinfo in epinfo_buf]),
-            "fps": n_steps / (t1 - t0),
-            "n_episode": n_ep,
-            "Steps": n_steps
-        }
-        if "TD" in training_config["algorithm"] or "DDPG" in training_config["algorithm"]:
-            log.update({
-                "Exploration_noise": policy.exploration_noise,
-            })
-        if "SAC" in training_config["algorithm"]:
-            log.update({
-                "Alpha": policy.alpha,
-            })
-        log.update(loss_info)
-        print(pformat(log))
-
-        if n_iter % training_config["log_intervals"] == 0:
-            for k in log.keys():
-                writer.add_scalar('train/' + k, log[k], global_step=n_steps)
-            policy.save(save_path, "last_policy")
-            print("Logging to %s" %save_path)
-
-            for k in world_ep_buf.keys():
-                writer.add_scalar(k + "/Episode_return", np.mean([epinfo["ep_rew"] for epinfo in world_ep_buf[k]]), global_step=n_steps)
-                writer.add_scalar(k + "/Episode_length", np.mean([epinfo["ep_len"] for epinfo in world_ep_buf[k]]), global_step=n_steps)
-                writer.add_scalar(k + "/Success", np.mean([epinfo["success"] for epinfo in world_ep_buf[k]]), global_step=n_steps)
-                writer.add_scalar(k + "/Time", np.mean([epinfo["ep_time"] for epinfo in world_ep_buf[k]]), global_step=n_steps)
-                writer.add_scalar(k + "/Collision", np.mean([epinfo["collision"] for epinfo in world_ep_buf[k]]), global_step=n_steps)
-
-if __name__ == "__main__":
-    torch.set_num_threads(8)
-    parser = argparse.ArgumentParser(description = 'Start training')
-    parser.add_argument('--config_path', dest='config_path', default="configs/e2e_default.yaml")
-    parser.add_argument('--device', dest='device', default=None)
-    logging.getLogger().setLevel("INFO")
-    args = parser.parse_args()
-    CONFIG_PATH = args.config_path
-    SAVE_PATH = "logging/"
-    print(">>>>>>>> Loading the configuration from %s" % CONFIG_PATH)
-    config = initialize_config(CONFIG_PATH, SAVE_PATH)
-
-    seed(config)
-    print(">>>>>>>> Creating the environments")
-    env = initialize_envs(config)
-    
-    print(">>>>>>>> Initializing the policy")
-    policy, replay_buffer = initialize_policy(config, env, device=args.device)
-
-    print(">>>>>>>> Start training")
-    train(env, policy, replay_buffer, config)
+if __name__ == '__main__':
+    main()
