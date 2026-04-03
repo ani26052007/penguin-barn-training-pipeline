@@ -209,9 +209,9 @@ class ReplayBuffer:
         self.action[i]     = torch.from_numpy(action)
         self.next_lidar[i] = torch.from_numpy(next_lidar)
         self.next_goal[i]  = torch.from_numpy(next_goal)
-        self.reward[i]     = reward
-        self.done[i]       = done
-        self.log_prob[i]   = log_prob
+        self.reward[i]     = float(reward)
+        self.done[i]       = float(done)
+        self.log_prob[i]   = torch.from_numpy(np.array(log_prob, dtype=np.float32))
 
         self.ptr  = (self.ptr + 1) % self.capacity
         self.size = min(self.size + 1, self.capacity)

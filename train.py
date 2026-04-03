@@ -56,7 +56,7 @@ def wait_for_buffer(buffer_path, min_transitions=1000, poll_interval=10.0):
     """Block until enough transitions are in the buffer to start training."""
     print(f"[Learner] Waiting for {min_transitions} transitions in buffer...")
     while True:
-        buf_files = glob.glob(os.path.join(buffer_path, 'actor_*_buf_*.pt'))
+        buf_files = glob.glob(os.path.join(buffer_path, 'actor_*.pt'))
         total = sum(
             torch.load(f, map_location='cpu')['size']
             for f in buf_files

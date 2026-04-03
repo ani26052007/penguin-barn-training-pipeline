@@ -3,22 +3,17 @@ actor.py
 ========
 ReinFlow rollout actor for ros_jackal.
 
-Critical obs format notes (from reading envs/jackal_gazebo_envs.py):
-  - env obs[:720] is LiDAR normalized to (-1,1) with laser_clip=4
-  - env obs[720:722] is Cartesian goal normalized, NOT polar
-  - Our model expects raw metres [0,10] LiDAR and polar [dist, bearing] goal
-  - Solution: IGNORE env obs for scan/goal. Use env.gazebo_sim directly.
+Key design decisions:
+  - Each actor is assigned ONE fixed world for its entire lifetime
+  - env is created ONCE, reset() called between episodes (no close/recreate)
+  - env obs is IGNORED for scan/goal — we call gazebo_sim directly for raw data
+  - Flush to disk after EVERY episode (not batched)
+  - unpause/pause around get_laser_scan() calls (env leaves Gazebo paused)
 
-env.step() is still used for:
-  - reward (ShapingRewardWrapper adds y-progress shaping)
-  - done flag
-  - info dict (collision, success, time)
-
-Env lifecycle:
-  - env.close() kills all ROS processes (killall -9)
-  - gym.make() takes ~10s to relaunch Gazebo
-  - We create one env per world, reset() between episodes on same world
-  - Close+recreate only when switching worlds
+obs format (from jackal_gazebo_envs.py):
+  - env obs[:720] normalized to (-1,1) with laser_clip=4  ← IGNORED
+  - env obs[720:722] Cartesian goal normalized             ← IGNORED
+  - We get raw [0,10]m scan and polar [dist,bearing] goal directly
 """
 
 import os
@@ -59,103 +54,81 @@ def load_config(path):
         return yaml.safe_load(f)
 
 
-# ── Raw observation helpers ───────────────────────────────────────────────────
+# ── LiDAR buffer ──────────────────────────────────────────────────────────────
 
 class LiDARBuffer:
-    """
-    Rolling window of raw LiDAR scans in metres.
-    Reads directly from env.gazebo_sim — bypasses env's normalization.
-    """
     def __init__(self, seq_len=8, num_rays=720):
         self.seq_len  = seq_len
         self.num_rays = num_rays
         self.buf      = deque(maxlen=seq_len)
 
     def push_from_sim(self, gazebo_sim):
-        """
-        Get raw scan from GazeboSimulation and push.
-        Returns raw clipped scan (720,) in metres [0,10].
-        """
+        """Get raw scan — unpauses Gazebo to receive scan, then pauses again."""
+        gazebo_sim.unpause()
         scan_msg = gazebo_sim.get_laser_scan()
-        scan     = np.array(scan_msg.ranges, dtype=np.float32)
-        scan     = np.where(np.isfinite(scan), scan, 10.0)
-        scan     = np.clip(scan, 0.0, 10.0)
+        gazebo_sim.pause()
+        scan = np.array(scan_msg.ranges, dtype=np.float32)
+        scan = np.where(np.isfinite(scan), scan, 10.0)
+        scan = np.clip(scan, 0.0, 10.0)
         if len(scan) != self.num_rays:
             scan = np.interp(
                 np.linspace(0, len(scan)-1, self.num_rays),
                 np.arange(len(scan)), scan
             ).astype(np.float32)
         self.buf.append(scan)
-        return scan
 
     def warmup(self):
-        """Fill buffer by repeating current scan."""
         if len(self.buf) >= 1:
             first = self.buf[-1].copy()
             while len(self.buf) < self.seq_len:
                 self.buf.appendleft(first)
 
     def get(self):
-        """Returns (1, seq_len, num_rays) float32."""
         return np.stack(list(self.buf))[np.newaxis].astype(np.float32)
 
     def reset(self):
         self.buf.clear()
 
 
-def get_polar_goal(gazebo_sim, world_frame_goal):
-    """
-    Compute [dist_m, bearing_rad] in robot frame from Gazebo ground truth.
-    Matches ros_bridge.py exactly — what the model was trained on.
+# ── Goal vector ───────────────────────────────────────────────────────────────
 
-    gazebo_sim.get_model_state() returns ground truth pose.
-    world_frame_goal: (gx, gy) tuple in world frame.
-    """
+def get_polar_goal(gazebo_sim, world_frame_goal):
+    """[dist_m, bearing_rad] in robot frame. Matches ros_bridge.py exactly."""
     state = gazebo_sim.get_model_state()
     pos   = state.pose.position
     ori   = state.pose.orientation
-
     rx, ry = pos.x, pos.y
     ox, oy, oz, ow = ori.x, ori.y, ori.z, ori.w
-    yaw = math.atan2(2*(ow*oz + ox*oy), 1 - 2*(oy*oy + oz*oz))
-
+    yaw  = math.atan2(2*(ow*oz + ox*oy), 1 - 2*(oy*oy + oz*oz))
     gx, gy = world_frame_goal
-    dx     = gx - rx
-    dy     = gy - ry
-    dist   = math.sqrt(dx**2 + dy**2)
-    bear   = math.atan2(dy, dx) - yaw
-    bear   = math.atan2(math.sin(bear), math.cos(bear))   # wrap [-π, π]
-
+    dx, dy = gx - rx, gy - ry
+    dist = math.sqrt(dx**2 + dy**2)
+    bear = math.atan2(math.sin(math.atan2(dy, dx) - yaw),
+                      math.cos(math.atan2(dy, dx) - yaw))
     return np.array([dist, bear], dtype=np.float32)
 
 
-# ── Env construction ──────────────────────────────────────────────────────────
+# ── Env ───────────────────────────────────────────────────────────────────────
 
 def make_env(world_idx, cfg):
-    """
-    Creates and wraps the gym env for one BARN world.
-    Blocks for ~10s while Gazebo launches.
-    """
-    world_name = f'BARN/world_{world_idx}.world'
     env = gym.make(
         id='motion_control_continuous_laser-v0',
-        world_name=world_name,
+        world_name=f'BARN/world_{world_idx}.world',
         gui=False,
         init_position=[-2.25, 3, np.pi / 2],
         goal_position=[0, 10, 0],
-        time_step=0.2,           # 5Hz — matches original paper
+        time_step=0.2,
         slack_reward=0,
         success_reward=float(cfg.get('r_goal', 20.0)),
         collision_reward=float(cfg.get('r_collision', -4.0)),
         failure_reward=0,
-        goal_reward=1,           # ShapingRewardWrapper adds y-progress on top
+        goal_reward=1,
         max_collision=1,
     )
-    env = ShapingRewardWrapper(env)
-    return env
+    return ShapingRewardWrapper(env)
 
 
-# ── Policy I/O ────────────────────────────────────────────────────────────────
+# ── Policy ────────────────────────────────────────────────────────────────────
 
 def load_policy(buffer_path, device='cpu'):
     path = os.path.join(buffer_path, 'policy_latest.pt')
@@ -177,36 +150,41 @@ def load_policy(buffer_path, device='cpu'):
 
 # ── World assignment ──────────────────────────────────────────────────────────
 
-def get_my_worlds(actor_id, num_actors, world_range):
+def get_my_world(actor_id, num_actors, world_range):
+    """Each actor gets ONE fixed world for its entire lifetime."""
     lo, hi    = world_range
     per_actor = max(1, (hi - lo) // num_actors)
-    start     = lo + actor_id * per_actor
-    end       = min(hi, start + per_actor)
-    worlds    = list(range(start, end))
-    return worlds if worlds else list(range(lo, hi))
+    world_idx = lo + actor_id * per_actor
+    return min(world_idx, hi - 1)
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────
 
+def get_my_world(actor_id, num_actors, world_range):
+    lo, hi    = world_range
+    per_actor = max(1, (hi - lo) // num_actors)
+    world_idx = lo + actor_id * per_actor
+    return min(world_idx, hi - 1)
+
+
 def main():
     args   = parse_args()
     cfg    = load_config(args.config)
-    device = torch.device('cpu')   # actors always CPU inside container
+    device = torch.device('cpu')
 
     os.makedirs(args.buffer_path, exist_ok=True)
 
-    num_rays    = cfg.get('num_rays', 720)
-    seq_len     = cfg.get('seq_len', 8)
-    flow_steps  = cfg.get('flow_steps', 10)
-    flush_every = cfg.get('flush_every', 200)
-    v_max = cfg.get('v_max', 2.0);  v_min = cfg.get('v_min', -1.0)
-    w_max = cfg.get('w_max', 3.14); w_min = cfg.get('w_min', -3.14)
+    num_rays   = cfg.get('num_rays', 720)
+    seq_len    = cfg.get('seq_len', 8)
+    flow_steps = cfg.get('flow_steps', 10)
+    v_max = cfg.get('v_max',  2.0);  v_min = cfg.get('v_min', -1.0)
+    w_max = cfg.get('w_max', 3.14);  w_min = cfg.get('w_min', -3.14)
+    # Fixed world for this actor's entire lifetime
+    world_idx = get_my_world(args.id, args.num_actors,
+                             cfg.get('world_range', [0, 250]))
+    print(f"[Actor {args.id}] Fixed world: {world_idx}")
 
-    my_worlds = get_my_worlds(args.id, args.num_actors,
-                              cfg.get('world_range', [0, 250]))
-    print(f"[Actor {args.id}] Worlds {my_worlds[0]}–{my_worlds[-1]}")
-
-    # Wait for learner to publish initial policy
+    # Wait for initial policy
     model, noise_net = None, None
     while model is None:
         model, noise_net = load_policy(args.buffer_path, device)
@@ -215,34 +193,18 @@ def main():
             time.sleep(5.0)
     print(f"[Actor {args.id}] Policy ready")
 
-    local_buf       = ReplayBuffer(capacity=10_000, seq_len=seq_len,
-                                   num_rays=num_rays, device='cpu')
-    lidar_buf       = LiDARBuffer(seq_len=seq_len, num_rays=num_rays)
-    episode         = 0
-    current_world   = None
-    env             = None
+    # Create env ONCE
+    print(f"[Actor {args.id}] Loading world {world_idx}...")
+    env              = make_env(world_idx, cfg)
+    gazebo_sim       = env.env.gazebo_sim
+    world_frame_goal = env.env.world_frame_goal
+
+    lidar_buf = LiDARBuffer(seq_len=seq_len, num_rays=num_rays)
+    episode   = 0
 
     while True:
-        world_idx = my_worlds[episode % len(my_worlds)]
-
-        # Close and recreate env only when world changes
-        if world_idx != current_world:
-            if env is not None:
-                env.close()
-                time.sleep(2.0)
-            print(f"[Actor {args.id}] Loading world {world_idx}...")
-            env           = make_env(world_idx, cfg)
-            current_world = world_idx
-            # env.env is the unwrapped MotionControlContinuousLaser
-            # gazebo_sim lives there
-            gazebo_sim        = env.env.gazebo_sim
-            world_frame_goal  = env.env.world_frame_goal  # (gx, gy) in world frame
-
-        # ── Reset episode ──────────────────────────────────────────────────────
         env.reset()
         lidar_buf.reset()
-
-        # First raw scan + warmup
         lidar_buf.push_from_sim(gazebo_sim)
         lidar_buf.warmup()
 
@@ -251,15 +213,12 @@ def main():
         step_count = 0
         ep_buf     = []
 
-        # ── Rollout ───────────────────────────────────────────────────────────
         while not done:
-            # Get raw observations — bypassing env's normalization
             lidar_buf.push_from_sim(gazebo_sim)
-            lidar_seq = lidar_buf.get()                           # (1, 8, 720) metres
-            goal_vec  = get_polar_goal(gazebo_sim, world_frame_goal)  # (2,) [dist, bearing]
-            goal_in   = goal_vec[np.newaxis]                      # (1, 2)
+            lidar_seq = lidar_buf.get()
+            goal_vec  = get_polar_goal(gazebo_sim, world_frame_goal)
+            goal_in   = goal_vec[np.newaxis]
 
-            # ReinFlow action sampling
             with torch.no_grad():
                 act_t, logp_t, _ = reinflow_forward(
                     model, noise_net,
@@ -268,60 +227,46 @@ def main():
                     n_steps=flow_steps
                 )
 
-            action   = act_t.numpy()[0]   # (2,) [cmd_lin, cmd_ang]
-            log_prob = logp_t.numpy()[0]  # (1,)
+            action   = act_t.numpy()[0]
+            log_prob = logp_t.numpy()[0]
 
             action_clipped = np.array([
                 np.clip(action[0], v_min, v_max),
                 np.clip(action[1], w_min, w_max),
             ], dtype=np.float32)
 
-            # Step — reward/done/info come from env, obs is ignored
             _, reward, done, info = env.step(action_clipped)
 
-            # Next raw observations
             lidar_buf.push_from_sim(gazebo_sim)
             next_lidar_seq = lidar_buf.get()
             next_goal_vec  = get_polar_goal(gazebo_sim, world_frame_goal)
             next_goal_in   = next_goal_vec[np.newaxis]
 
             ep_buf.append((
-                lidar_seq[0],           # (8, 720) — current
-                goal_in[0],             # (2,)
-                action_clipped,         # (2,)
-                next_lidar_seq[0],      # (8, 720) — next
-                next_goal_in[0],        # (2,)
-                np.float32(reward),
-                np.float32(float(done)),
-                log_prob,               # (1,)
+                lidar_seq[0], goal_in[0], action_clipped,
+                next_lidar_seq[0], next_goal_in[0],
+                np.float32(reward), np.float32(float(done)), log_prob,
             ))
 
             ep_reward  += reward
             step_count += 1
 
-        # ── End of episode ────────────────────────────────────────────────────
         collision = info.get('collided', False)
         success   = info.get('success', False)
-        status    = ('✓ SUCCESS'   if success  else
-                     '✗ COLLISION' if collision else
-                     '⏱ TIMEOUT')
+        status    = ('SUCCESS' if success else 'COLLISION' if collision else 'TIMEOUT')
         print(f"[Actor {args.id}] Ep {episode:4d} | World {world_idx:3d} | "
               f"{step_count:3d} steps | R={ep_reward:+6.1f} | {status}")
 
-        # Store transitions in local buffer
+        local_buf = ReplayBuffer(capacity=len(ep_buf)+1,
+                                 seq_len=seq_len, num_rays=num_rays, device='cpu')
         for (l, g, a, nl, ng, r, d, lp) in ep_buf:
             local_buf.add(l, g, a, nl, ng, r, d, lp)
 
-        # Flush to shared disk buffer
-        if len(local_buf) >= flush_every:
-            out = os.path.join(args.buffer_path,
-                               f'actor_{args.id:02d}_ep{episode:05d}.pt')
-            local_buf.save(out)
-            local_buf = ReplayBuffer(capacity=10_000, seq_len=seq_len,
-                                     num_rays=num_rays, device='cpu')
-            print(f"[Actor {args.id}] Flushed → {out}")
+        out = os.path.join(args.buffer_path,
+                           f'actor_{args.id:02d}_ep{episode:05d}.pt')
+        local_buf.save(out)
+        print(f"[Actor {args.id}] Flushed {len(ep_buf)} transitions -> {out}")
 
-        # Reload latest policy (async)
         new_model, new_noise = load_policy(args.buffer_path, device)
         if new_model is not None:
             model, noise_net = new_model, new_noise
