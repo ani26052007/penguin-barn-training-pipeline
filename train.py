@@ -170,6 +170,17 @@ def main():
 
     # ── Phase 1: Critic warmup ─────────────────────────────────────────────────
     # Wait for initial data, then train V+Q before actor updates begin
+    # Bootstrap — save initial policy so actors can start collecting
+    initial_policy_path = os.path.join(args.buffer_path, 'policy_latest.pt')
+    if not os.path.exists(initial_policy_path):
+        print('[Learner] Saving initial policy for actors to bootstrap...')
+        torch.save({
+            'model_state':     model.state_dict(),
+            'noise_net_state': noise_net.state_dict(),
+            'step': 0,
+        }, initial_policy_path)
+        print('[Learner] Initial policy saved — start actors now.')
+
     wait_for_buffer(args.buffer_path,
                     min_transitions=cfg.get('warmup_transitions', 2_000))
     load_all_buffer_files(args.buffer_path, replay_buffer)
