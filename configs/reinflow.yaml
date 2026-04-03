@@ -1,0 +1,50 @@
+# configs/reinflow.yaml
+# ReinFlow online RL configuration for BARN challenge
+
+# ── Environment ───────────────────────────────────────────────
+world_range: [0, 250]       # train on first 250 BARN worlds
+num_actors: 10              # Singularity containers on Threadripper
+episode_timeout: 100.0      # seconds (matches BARN challenge)
+seq_len: 8                  # LiDAR history frames
+num_rays: 720               # UST-10LX ray count
+
+# ── Replay buffer ─────────────────────────────────────────────
+buffer_capacity: 10000
+warmup_transitions: 200    # wait for this many before critic warmup
+buffer_refresh_steps: 500  # reload buffer files every N steps
+
+# ── Training schedule ─────────────────────────────────────────
+critic_warmup_steps: 5000   # Phase 1: critic only, backbone frozen
+total_steps: 1000000        # Phase 2: full ReinFlow training
+batch_size: 256
+save_every: 5000
+log_every: 100
+
+# ── Critic hyperparams ────────────────────────────────────────
+gamma: 0.99                 # discount factor
+tau: 0.005                  # polyak averaging
+expectile: 0.7              # IQL expectile (0.7 = moderately optimistic)
+q_clamp: 100.0              # max absolute Q value
+
+# ── Actor hyperparams (ReinFlow PPO) ──────────────────────────
+clip_eps: 0.2               # PPO clipping epsilon
+actor_updates_per_critic: 1 # PPO updates per critic update
+flow_steps_train: 4         # ODE steps during actor update (faster than rollout)
+flow_steps: 10              # ODE steps during rollout
+
+# ── Learning rates ────────────────────────────────────────────
+lr_actor: 0.00003           # backbone + flow head (low — warm started)
+lr_noise: 0.0003            # noise net (higher — trains from scratch)
+lr_critic: 0.0003           # V and Q heads
+
+# ── Reward shaping ────────────────────────────────────────────
+r_goal: 20.0
+r_progress: 1.0
+r_collision: -4.0
+goal_radius: 1.0            # metres — success threshold
+
+# ── Velocity limits ───────────────────────────────────────────
+v_max: 2.0
+v_min: -2.0
+w_max: 2.0
+w_min: -2.0
