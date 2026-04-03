@@ -1,4 +1,4 @@
-# ROS-Jackal
+# Aneesh ROS-Jackal
 This is the repository for the paper "[Benchmarking Reinforcement Learning Techniques for Autonomous Navigation](https://arxiv.org/abs/2210.04839)".
 
 The results shown in the paper use Condor Cluster to distribute 100 actors for collecting trajectories. This setting can greatly speed up the training and make it feasible to finish all the experiments presented in the paper, however Condor Cluster is relatively inaccessible to most users. Instead, to guarantee reproducibility, we provide this version of repository that distributes the actors over 10 Singularity containers that can run locally on a single machine.
