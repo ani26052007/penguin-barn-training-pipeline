@@ -71,7 +71,7 @@ def wait_for_buffer(buffer_path, min_transitions=1000, poll_interval=10.0):
 
 def load_all_buffer_files(buffer_path, replay_buffer):
     """Load all actor buffer files into the shared replay buffer."""
-    buf_files = sorted(glob.glob(os.path.join(buffer_path, 'actor_*_buf_*.pt')))
+    buf_files = sorted(glob.glob(os.path.join(buffer_path, 'actor_*.pt')))
     loaded = 0
     for f in buf_files:
         try:
