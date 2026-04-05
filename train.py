@@ -35,6 +35,8 @@ from rl_algos.reinflow import (update_critic, update_actor,
                                 polyak_update, ReplayBuffer)
 
 
+_loaded_files = set()
+
 def parse_args():
     p = argparse.ArgumentParser()
     p.add_argument('--config',     type=str, default='configs/reinflow.yaml')
@@ -70,22 +72,39 @@ def wait_for_buffer(buffer_path, min_transitions=1000, poll_interval=10.0):
 
 
 def load_all_buffer_files(buffer_path, replay_buffer):
-    """Load all actor buffer files into the shared replay buffer."""
+    global _loaded_files
     buf_files = sorted(glob.glob(os.path.join(buffer_path, 'actor_*.pt')))
+    new_files = [f for f in buf_files if f not in _loaded_files]
+    if not new_files:
+        return 0
     loaded = 0
-    for f in buf_files:
+    for f in new_files:
         try:
-            replay_buffer.load(f)
-            loaded += 1
+            data = torch.load(f, map_location='cpu')
+            n = data['reward'].shape[0]
+            for i in range(n):
+                replay_buffer.add(
+                    data['lidar'][i].numpy(),
+                    data['goal'][i].numpy(),
+                    data['action'][i].numpy(),
+                    data['next_lidar'][i].numpy(),
+                    data['next_goal'][i].numpy(),
+                    data['reward'][i].numpy(),
+                    data['done'][i].numpy(),
+                    data['log_prob'][i].numpy(),
+                )
+            _loaded_files.add(f)
+            loaded += n
         except Exception as e:
             print(f"[Learner] Warning: could not load {f}: {e}")
+    print(f"[ReplayBuffer] Added {loaded} transitions, buffer size={len(replay_buffer)}")
     return loaded
 
 
 def save_policy(model, noise_net, buffer_path, step, cfg, extra=None):
     """Save policy for actors to load. Also saves full training checkpoint."""
     # Policy for actors (minimal)
-    policy_path = os.path.join(buffer_path, 'policy_latest.pt')
+    policy_path = os.path.join("checkpoints", 'policy_latest.pt')
     torch.save({
         'model_state':     model.state_dict(),
         'noise_net_state': noise_net.state_dict(),
@@ -94,7 +113,7 @@ def save_policy(model, noise_net, buffer_path, step, cfg, extra=None):
 
     # Full checkpoint for resuming
     if extra is not None:
-        ckpt_path = os.path.join(buffer_path, f'train_ckpt_step{step}.pt')
+        ckpt_path = os.path.join("checkpoints", f'train_ckpt_step{step}.pt')
         torch.save(extra, ckpt_path)
         print(f"[Learner] Saved checkpoint → {ckpt_path}")
 
