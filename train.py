@@ -59,21 +59,19 @@ def wait_for_buffer(buffer_path, min_transitions=1000, poll_interval=10.0):
     print(f"[Learner] Waiting for {min_transitions} transitions in buffer...")
     while True:
         buf_files = glob.glob(os.path.join(buffer_path, 'actor_*.pt'))
-        total = sum(
-            torch.load(f, map_location='cpu')['size']
-            for f in buf_files
-            if os.path.exists(f)
-        )
-        if total >= min_transitions:
-            print(f"[Learner] Buffer ready: {total} transitions")
+        estimated = len(buf_files) * 80
+        if estimated >= min_transitions:
+            print(f"[Learner] Buffer ready: ~{estimated} transitions ({len(buf_files)} files)")
             return
-        print(f"[Learner] Buffer: {total}/{min_transitions} transitions... waiting")
+        print(f"[Learner] Buffer: {len(buf_files)} files (~{estimated}/{min_transitions})... waiting")
         time.sleep(poll_interval)
 
 
-def load_all_buffer_files(buffer_path, replay_buffer):
+def load_all_buffer_files(buffer_path, replay_buffer, max_files=500):
     global _loaded_files
     buf_files = sorted(glob.glob(os.path.join(buffer_path, 'actor_*.pt')))
+    # Only keep the most recent files — old stale-policy data is low value
+    buf_files = buf_files[-max_files:]
     new_files = [f for f in buf_files if f not in _loaded_files]
     if not new_files:
         return 0
@@ -102,16 +100,14 @@ def load_all_buffer_files(buffer_path, replay_buffer):
 
 
 def save_policy(model, noise_net, buffer_path, step, cfg, extra=None):
-    """Save policy for actors to load. Also saves full training checkpoint."""
-    # Policy for actors (minimal)
-    policy_path = os.path.join("checkpoints", 'policy_latest.pt')
+    # Policy for actors — must go to buffer_path so actors can find it
+    policy_path = os.path.join(buffer_path, 'policy_latest.pt')  # ← was "checkpoints"
     torch.save({
         'model_state':     model.state_dict(),
         'noise_net_state': noise_net.state_dict(),
         'step':            step,
     }, policy_path)
 
-    # Full checkpoint for resuming
     if extra is not None:
         ckpt_path = os.path.join("checkpoints", f'train_ckpt_step{step}.pt')
         torch.save(extra, ckpt_path)
@@ -276,12 +272,13 @@ def main():
             for k, v_val in {**c_logs, **a_logs}.items():
                 writer.add_scalar(f'train/{k}', v_val, step)
             print(f"  Step {step:6d} | "
-                  f"V={c_logs['v_mean']:+.3f} "
-                  f"Q={c_logs['q_mean']:+.3f} "
-                  f"actor_loss={a_logs['actor_loss']:+.4f} "
-                  f"ratio={a_logs['ratio_mean']:.3f} "
-                  f"adv={a_logs['adv_mean']:+.3f} "
-                  f"buf={len(replay_buffer):,}")
+                f"V={c_logs['v_mean']:+.3f} "
+                f"Q={c_logs['q_mean']:+.3f} "
+                f"actor_loss={a_logs['actor_loss']:+.4f} "
+                f"ratio={a_logs['ratio_mean']:.3f} "
+                f"adv_raw={a_logs['adv_raw_mean']:+.3f}±{a_logs['adv_raw_std']:.3f} "
+                f"gnorm={a_logs['actor_grad_norm']:.2f} "
+                f"buf={len(replay_buffer):,}")
 
         # ── Save policy for actors ─────────────────────────────────────────────
         if step % save_every == 0:

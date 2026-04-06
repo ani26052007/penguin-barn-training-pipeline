@@ -6,6 +6,7 @@ out
 **.sub
 configs/config.yaml
 local_buffer
+checkpoints
 badmosh
 data
 slurm_logs

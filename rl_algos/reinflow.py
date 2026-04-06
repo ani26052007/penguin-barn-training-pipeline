@@ -128,9 +128,12 @@ def update_actor(batch, model, noise_net, v_targ, q_targ,
 
     # Advantage — detached, no gradient through critic
     with torch.no_grad():
-        adv = q_targ.q_min(ctx.detach(), action.detach()) - v_targ(ctx.detach())
-        # Normalize advantages per batch for stability
-        adv = (adv - adv.mean()) / (adv.std() + 1e-8)
+        adv_raw = q_targ.q_min(ctx.detach(), action.detach()) - v_targ(ctx.detach())
+        adv_raw_mean = adv_raw.mean().item()
+        adv_raw_std  = adv_raw.std().item()
+        # True normalization — keeps gradient scale constant regardless of Q/V magnitude
+        adv = (adv_raw - adv_raw.mean()) / (adv_raw.std() + 1e-8)
+        adv = adv.clamp(-3.0, 3.0)
 
     # PPO clipped surrogate
     eps   = cfg.get('clip_eps', CLIP_EPS)
@@ -141,16 +144,19 @@ def update_actor(batch, model, noise_net, v_targ, q_targ,
     actor_loss = -torch.min(surr1, surr2).mean()
 
     actor_loss.backward()
-    torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
-    torch.nn.utils.clip_grad_norm_(noise_net.parameters(), 1.0)
+    actor_grad_norm = torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
+    noise_grad_norm = torch.nn.utils.clip_grad_norm_(noise_net.parameters(), 1.0)
     opt_actor.step()
     opt_noise.step()
 
     return {
-        'actor_loss':   actor_loss.item(),
-        'ratio_mean':   ratio.mean().item(),
-        'ratio_max':    ratio.max().item(),
-        'adv_mean':     adv.mean().item(),
+        'actor_loss':    actor_loss.item(),
+        'ratio_mean':    ratio.mean().item(),
+        'actor_grad_norm': actor_grad_norm.item(),
+        'noise_grad_norm': noise_grad_norm.item(),
+        'ratio_max':     ratio.max().item(),
+        'adv_raw_mean':  adv_raw_mean,   # This is the meaningful signal, not adv_mean
+        'adv_raw_std':   adv_raw_std,
         'log_prob_mean': log_prob_new.mean().item(),
     }
 

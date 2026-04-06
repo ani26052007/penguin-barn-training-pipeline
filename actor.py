@@ -160,12 +160,6 @@ def get_my_world(actor_id, num_actors, world_range):
 
 # ── Main ──────────────────────────────────────────────────────────────────────
 
-def get_my_world(actor_id, num_actors, world_range):
-    lo, hi    = world_range
-    per_actor = max(1, (hi - lo) // num_actors)
-    world_idx = lo + actor_id * per_actor
-    return min(world_idx, hi - 1)
-
 
 def main():
     args   = parse_args()
@@ -177,8 +171,8 @@ def main():
     num_rays   = cfg.get('num_rays', 720)
     seq_len    = cfg.get('seq_len', 8)
     flow_steps = cfg.get('flow_steps', 10)
-    v_max = cfg.get('v_max',  2.0);  v_min = cfg.get('v_min', -1.0)
-    w_max = cfg.get('w_max', 3.14);  w_min = cfg.get('w_min', -3.14)
+    v_max = cfg.get('v_max',  2.0);  v_min = cfg.get('v_min', -2.0)
+    w_max = cfg.get('w_max', 4.0);  w_min = cfg.get('w_min', -4.0)
     # Fixed world for this actor's entire lifetime
     world_idx = get_my_world(args.id, args.num_actors,
                              cfg.get('world_range', [0, 250]))

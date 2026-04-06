@@ -1,10 +1,8 @@
 >>>>>>>>>>>>>>>>>> Load world: BARN/world_36.world <<<<<<<<<<<<<<<<<<
-[31mWARNING: disk usage in log directory [/home/gymkhana/.ros/log] is over 1GB.
-It's recommended that you use the 'rosclean' command.[0m
 xacro: in-order processing became default in ROS Melodic. You can drop the option.
 the rosdep view is empty: call 'sudo rosdep init' and 'rosdep update'
-[0m[ INFO] [1775397625.351586881]: Finished loading Gazebo ROS API Plugin.[0m
-[0m[ INFO] [1775397625.354010149]: waitForService: Service [/gazebo/set_physics_properties] has not been advertised, waiting...[0m
+[0m[ INFO] [1775400204.500119533]: Finished loading Gazebo ROS API Plugin.[0m
+[0m[ INFO] [1775400204.516865851]: waitForService: Service [/gazebo/set_physics_properties] has not been advertised, waiting...[0m
 Couldn't find a preferred IP via the getifaddrs() call; I'm assuming that your IP address is 127.0.0.1.  This should work for local processes, but will almost certainly not work if you have remote processes.Report to the disc-zmq development team to seek a fix.
 Couldn't find a preferred IP via the getifaddrs() call; I'm assuming that your IP address is 127.0.0.1.  This should work for local processes, but will almost certainly not work if you have remote processes.Report to the disc-zmq development team to seek a fix.
 Couldn't find a preferred IP via the getifaddrs() call; I'm assuming that your IP address is 127.0.0.1.  This should work for local processes, but will almost certainly not work if you have remote processes.Report to the disc-zmq development team to seek a fix.
@@ -12,16 +10,3467 @@ Couldn't find a preferred IP via the getifaddrs() call; I'm assuming that your I
 Failed to create secure directory (/run/user/1000/pulse): No such file or directory
 ALSA lib pcm_dmix.c:1052:(snd_pcm_dmix_open) unable to open slave
 AL lib: (EE) ALCplaybackAlsa_open: Could not open playback device 'default': No such file or directory
-[31m[ERROR] [1775397628.404585676, 0.003000000]: Updating ModelState: model [jackal] does not exist[0m
-[33m[ WARN] [1775397628.536229313, 0.087000000]: Failed to meet update rate! Took 0.087000000000000007883[0m
-[33m[ WARN] [1775397628.538720433, 0.088000000]: Failed to meet update rate! Took 0.068000000000000004885[0m
-[0m[ INFO] [1775397628.332094849]: waitForService: Service [/gazebo/set_physics_properties] is now available.[0m
-[0m[ INFO] [1775397628.379473009]: Physics dynamic reconfigure ready.[0m
+[0m[ INFO] [1775400210.545619789]: waitForService: Service [/gazebo/set_physics_properties] is now available.[0m
 [1;33mWarning [parser_urdf.cc:1115][0m multiple inconsistent <gravity> exists due to fixed joint reduction overwriting previous value [true] with [false].
 [1;33mWarning [parser_urdf.cc:1115][0m multiple inconsistent <gravity> exists due to fixed joint reduction overwriting previous value [false] with [true].
-[31m[ERROR] [1775397629.508550372, 0.126000000]: No p gain specified for pid.  Namespace: /gazebo_ros_control/pid_gains/front_left_wheel[0m
-[31m[ERROR] [1775397629.509581684, 0.126000000]: No p gain specified for pid.  Namespace: /gazebo_ros_control/pid_gains/front_right_wheel[0m
-[31m[ERROR] [1775397629.510497995, 0.126000000]: No p gain specified for pid.  Namespace: /gazebo_ros_control/pid_gains/rear_left_wheel[0m
-[31m[ERROR] [1775397629.511275855, 0.126000000]: No p gain specified for pid.  Namespace: /gazebo_ros_control/pid_gains/rear_right_wheel[0m
-[33m[ WARN] [1775397688.687723026, 7.113000000]: Failed to meet update rate! Took 0.14500000000000001776[0m
-[33m[ WARN] [1775397688.718337489, 7.113000000]: Failed to meet update rate! Took 0.125[0m
+[31m[ERROR] [1775400212.404522185, 0.001000000]: No p gain specified for pid.  Namespace: /gazebo_ros_control/pid_gains/front_left_wheel[0m
+[31m[ERROR] [1775400212.407507380, 0.001000000]: No p gain specified for pid.  Namespace: /gazebo_ros_control/pid_gains/front_right_wheel[0m
+[31m[ERROR] [1775400212.409907469, 0.001000000]: No p gain specified for pid.  Namespace: /gazebo_ros_control/pid_gains/rear_left_wheel[0m
+[31m[ERROR] [1775400212.411851562, 0.001000000]: No p gain specified for pid.  Namespace: /gazebo_ros_control/pid_gains/rear_right_wheel[0m
+[33m[ WARN] [1775400249.396368044, 1.114000000]: Failed to meet update rate! Took 0.080000000000000001665[0m
+[33m[ WARN] [1775400249.728160518, 1.140000000]: Failed to meet update rate! Took 0.097000000000000002887[0m
+/venv/lib/python3.6/site-packages/gym/spaces/box.py:74: UserWarning: [33mWARN: Box bound precision lowered by casting to float32[0m
+  "Box bound precision lowered by casting to {}".format(self.dtype)
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+[Actor 3] Fixed world: 36
+[Actor 3] Policy ready
+[Actor 3] Loading world 36...
+[Actor 3] Ep    0 | World  36 |   1 steps | R=  +0.0 | TIMEOUT
+[Actor 3] Flushed 1 transitions -> local_buffer/actor_03_ep00000.pt
+[Actor 3] Ep    1 | World  36 | 100 steps | R=  -0.5 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00001.pt
+[Actor 3] Ep    2 | World  36 | 100 steps | R=  +0.7 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00002.pt
+[Actor 3] Ep    3 | World  36 | 100 steps | R=  -0.5 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00003.pt
+[Actor 3] Ep    4 | World  36 | 100 steps | R=  -0.4 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00004.pt
+[Actor 3] Ep    5 | World  36 | 100 steps | R=  -0.3 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00005.pt
+[Actor 3] Ep    6 | World  36 | 100 steps | R=  -0.5 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00006.pt
+[Actor 3] Ep    7 | World  36 | 100 steps | R=  -0.0 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00007.pt
+[Actor 3] Ep    8 | World  36 | 100 steps | R=  -0.4 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00008.pt
+[Actor 3] Ep    9 | World  36 | 100 steps | R=  -0.4 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00009.pt
+[Actor 3] Ep   10 | World  36 | 100 steps | R=  -0.2 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00010.pt
+[Actor 3] Ep   11 | World  36 | 100 steps | R=  -0.4 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00011.pt
+[Actor 3] Ep   12 | World  36 | 100 steps | R=  +1.4 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00012.pt
+[Actor 3] Ep   13 | World  36 | 100 steps | R=  -0.3 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00013.pt
+[Actor 3] Ep   14 | World  36 | 100 steps | R=  -0.3 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00014.pt
+[Actor 3] Ep   15 | World  36 | 100 steps | R=  -0.4 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00015.pt
+[Actor 3] Ep   16 | World  36 | 100 steps | R=  -0.3 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00016.pt
+[Actor 3] Ep   17 | World  36 | 100 steps | R=  +0.4 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00017.pt
+[Actor 3] Ep   18 | World  36 | 100 steps | R=  -0.3 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00018.pt
+[Actor 3] Ep   19 | World  36 | 100 steps | R=  -0.4 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00019.pt
+[Actor 3] Ep   20 | World  36 | 100 steps | R=  -0.5 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00020.pt
+[Actor 3] Ep   21 | World  36 | 100 steps | R=  +0.3 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00021.pt
+[Actor 3] Ep   22 | World  36 | 100 steps | R=  +0.5 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00022.pt
+[Actor 3] Ep   23 | World  36 | 100 steps | R=  -0.2 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00023.pt
+[Actor 3] Ep   24 | World  36 | 100 steps | R= +19.2 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00024.pt
+[Actor 3] Ep   25 | World  36 | 100 steps | R=  -0.0 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00025.pt
+[Actor 3] Ep   26 | World  36 | 100 steps | R=  -0.6 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00026.pt
+[Actor 3] Ep   27 | World  36 | 100 steps | R=  -0.7 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00027.pt
+[Actor 3] Ep   28 | World  36 | 100 steps | R=  -0.3 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00028.pt
+[Actor 3] Ep   29 | World  36 | 100 steps | R=  -0.3 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00029.pt
+[Actor 3] Ep   30 | World  36 |  59 steps | R=  +6.2 | COLLISION
+[Actor 3] Flushed 59 transitions -> local_buffer/actor_03_ep00030.pt
+[Actor 3] Ep   31 | World  36 | 100 steps | R=  +0.3 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00031.pt
+[Actor 3] Ep   32 | World  36 | 100 steps | R=  -0.0 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00032.pt
+[Actor 3] Ep   33 | World  36 | 100 steps | R=  -0.2 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00033.pt
+[Actor 3] Ep   34 | World  36 |  45 steps | R=  +5.9 | COLLISION
+[Actor 3] Flushed 45 transitions -> local_buffer/actor_03_ep00034.pt
+[Actor 3] Ep   35 | World  36 | 100 steps | R=  +0.5 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00035.pt
+[Actor 3] Ep   36 | World  36 | 100 steps | R=  -0.5 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00036.pt
+[Actor 3] Ep   37 | World  36 | 100 steps | R=  -0.4 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00037.pt
+[Actor 3] Ep   38 | World  36 | 100 steps | R=  +0.2 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00038.pt
+[Actor 3] Ep   39 | World  36 | 100 steps | R=  +0.2 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00039.pt
+[Actor 3] Ep   40 | World  36 | 100 steps | R=  -0.3 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00040.pt
+[Actor 3] Ep   41 | World  36 | 100 steps | R=  -0.1 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00041.pt
+[Actor 3] Ep   42 | World  36 | 100 steps | R=  -0.3 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00042.pt
+[Actor 3] Ep   43 | World  36 | 100 steps | R=  -0.4 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00043.pt
+[Actor 3] Ep   44 | World  36 | 100 steps | R=  -0.5 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00044.pt
+[Actor 3] Ep   45 | World  36 | 100 steps | R=  -0.7 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00045.pt
+[Actor 3] Ep   46 | World  36 | 100 steps | R=  -0.2 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00046.pt
+[Actor 3] Ep   47 | World  36 | 100 steps | R=  -0.2 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00047.pt
+[Actor 3] Ep   48 | World  36 | 100 steps | R=  -0.0 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00048.pt
+[Actor 3] Ep   49 | World  36 | 100 steps | R=  +9.4 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00049.pt
+[Actor 3] Ep   50 | World  36 | 100 steps | R=  +4.6 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00050.pt
+[Actor 3] Ep   51 | World  36 | 100 steps | R=  +0.3 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00051.pt
+[Actor 3] Ep   52 | World  36 | 100 steps | R=  +0.3 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00052.pt
+[Actor 3] Ep   53 | World  36 | 100 steps | R=  -0.4 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00053.pt
+[Actor 3] Ep   54 | World  36 | 100 steps | R=  -0.2 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00054.pt
+[Actor 3] Ep   55 | World  36 | 100 steps | R=  -0.7 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00055.pt
+[Actor 3] Ep   56 | World  36 |  73 steps | R=  +4.5 | COLLISION
+[Actor 3] Flushed 73 transitions -> local_buffer/actor_03_ep00056.pt
+[Actor 3] Ep   57 | World  36 | 100 steps | R=  -0.2 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00057.pt
+[Actor 3] Ep   58 | World  36 | 100 steps | R=  +0.3 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00058.pt
+[Actor 3] Ep   59 | World  
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00060.pt
+[Actor 3] Ep   61 | World  36 | 100 steps | R=  +0.1 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00061.pt
+[Actor 3] Ep   62 | World  36 | 100
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00122.pt
+[Actor 3] Ep  123 | World  36 | 100 steps | R=  +0.3 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00123.pt
+[Actor 3] Ep  124 | World  36 | 100 steps | R=  -0.2 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00124.pt
+[Actor 3] Ep  125 | World  36 | 100 steps | R=  -0.2 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00125.pt
+[Actor 3] Ep  126 | World  36 | 100 steps | R=  -0.1 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00126.pt
+[Actor 3] Ep  127 | World  36 | 100 steps | R=  -0.1 | TIMEOUT
+[Actor 3] Flush
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00184.pt
+[Actor 3] Ep  185 | World  36 | 100 steps | R=  -0.1 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00185.pt
+[Actor 3] Ep  186 | World  36 | 100 steps | R=  +0.2 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00186.pt
+[Actor 3] Ep  187 | World  36 | 100 steps | R=  -0.2 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00187.pt
+[Actor 3] Ep  188 | World  36 | 100 steps | R=  -0.0 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00188.pt
+[Actor 3] Ep  189 | World  36 | 100 steps | R=  -0.1 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00189.pt
+[Actor 3] Ep  190 | World  36 | 100 steps | R=  -0.4 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00190.pt
+[Actor 3] Ep  191 | World  36 | 100 steps | R=  +0.1 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00191.pt
+[Actor 3] Ep  192 | World  36 | 100 steps | R=  -0.1 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00192.pt
+[Actor 3] Ep  193 | World  36 | 100 steps | R=  -0.2 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00193.pt
+[Actor 3] Ep  194 | World  36 | 100 steps | R=  -0.2 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00194.pt
+[Actor 3] Ep  195 | World  36 | 100 steps | R=  -0.2 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00195.pt
+[Actor 3] Ep  196 | World  36 | 100 steps | R=  +0.5 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00196.pt
+[Actor 3] Ep  197 | World  36 | 100 steps | R=  -0.3 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00197.pt
+[Actor 3] Ep  198 | World  36 | 100 steps | R=  +0.4 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00198.pt
+[Actor 3] Ep  199 | World  36 | 100 steps | R=  -0.2 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00199.pt
+[Actor 3] Ep  200 | World  36 | 100 steps | R=  +0.0 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00200.pt
+[Actor 3] Ep  201 | World  36 | 100 steps | R=  -0.0 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00201.pt
+[Actor 3] Ep  202 | World  36 | 100 steps | R=  +0.4 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00202.pt
+[Actor 3] Ep  203 | World  36 | 100 steps | R=  -0.0 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00203.pt
+[Actor 3] Ep  204 | World  36 | 100 steps | R=  -0.0 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00204.pt
+[Actor 3] Ep  205 | World  36 | 100 steps | R=  +0.1 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00205.pt
+[Actor 3] Ep  206 | World  36 | 100 steps | R=  -0.1 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00206.pt
+[Actor 3] Ep  207 | World  36 | 100 steps | R=  -0.1 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00207.pt
+[Actor 3] Ep  208 | World  36 | 100 steps | R=  -0.1 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00208.pt
+[Actor 3] Ep  209 | World  36 | 100 steps | R=  +0.0 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00209.pt
+[Actor 3] Ep  210 | World  36 | 100 steps | R=  -0.2 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00210.pt
+[Actor 3] Ep  211 | World  36 | 100 steps | R=  -0.2 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00211.pt
+[Actor 3] Ep  212 | World  36 | 100 steps | R=  +0.3 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00212.pt
+[Actor 3] Ep  213 | World  36 | 100 steps | R=  +0.2 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00213.pt
+[Actor 3] Ep  214 | World  36 | 100 steps | R=  -0.1 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00214.pt
+[Actor 3] Ep  215 | World  36 | 100 steps | R=  +0.1 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00215.pt
+[Actor 3] Ep  216 | World  36 | 100 steps | R=  -0.0 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00216.pt
+[Actor 3] Ep  217 | World  36 | 100 steps | R=  +0.0 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00217.pt
+[Actor 3] Ep  218 | World  36 | 100 steps | R=  -0.1 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00218.pt
+[Actor 3] Ep  219 | World  36 | 100 steps | R=  -0.2 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00219.pt
+[Actor 3] Ep  220 | World  36 | 100 steps | R=  +0.1 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00220.pt
+[Actor 3] Ep  221 | World  36 | 100 steps | R=  +0.1 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00221.pt
+[Actor 3] Ep  222 | World  36 | 100 steps | R=  -0.0 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00222.pt
+[Actor 3] Ep  223 | World  36 | 100 steps | R=  -0.4 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00223.pt
+[Actor 3] Ep  224 | World  36 | 100 steps | R=  -0.3 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00224.pt
+[Actor 3] Ep  225 | World  36 | 100 steps | R=  -0.1 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00225.pt
+[Actor 3] Ep  226 | World  36 | 100 steps | R=  -0.2 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00226.pt
+[Actor 3] Ep  227 | World  36 | 100 steps | R=  -0.3 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00227.pt
+[Actor 3] Ep  228 | World  36 | 100 steps | R=  +0.0 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00228.pt
+[Actor 3] Ep  229 | World  36 | 100 steps | R=  +0.0 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00229.pt
+[Actor 3] Ep  230 | World  36 | 100 steps | R=  -0.1 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00230.pt
+[Actor 3] Ep  231 | World  36 | 100 steps | R=  -0.2 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00231.pt
+[Actor 3] Ep  232 | World  36 | 100 steps | R=  -0.3 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00232.pt
+[Actor 3] Ep  233 | World  36 | 100 steps | R=  -0.2 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00233.pt
+[Actor 3] Ep  234 | World  36 | 100 steps | R=  +0.1 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00234.pt
+[Actor 3] Ep  235 | World  36 | 100 steps | R=  +0.6 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00235.pt
+[Actor 3] Ep  236 | World  36 | 100 steps | R=  -0.2 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00236.pt
+[Actor 3] Ep  237 | World  36 | 100 steps | R=  -0.3 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00237.pt
+[Actor 3] Ep  238 | World  36 | 100 steps | R=  -0.1 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00238.pt
+[Actor 3] Ep  239 | World  36 | 100 steps | R=  +0.2 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00239.pt
+[Actor 3] Ep  240 | World  36 | 100 steps | R=  +0.7 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00240.pt
+[Actor 3] Ep  241 | World  36 | 100 steps | R=  -0.2 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00241.pt
+[Actor 3] Ep  242 | World  36 | 100 steps | R=  -0.1 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00242.pt
+[Actor 3] Ep  243 | World  36 | 100 steps | R=  -0.1 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00243.pt
+[Actor 3] Ep  244 | World  36 | 100 steps | R=  -0.0 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00244.pt
+[Actor 3] Ep  245 | World  36 | 100 steps | R=  +0.1 | TIMEOUT
+[Actor 3] Flushed 100 transitions -> local_buffer/actor_03_ep00245.pt
+[Actor 3] Ep  246 | World  36 | 100 steps | R=  +0.2 | TIMEOUT
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+Exception in thread /front/scan:
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 185, in robust_connect_subscriber
+    conn.receive_loop(receive_cb)
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 846, in receive_loop
+    self.close()
+  File "/opt/ros/melodic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 858, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'

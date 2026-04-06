@@ -1,0 +1,113 @@
+[Learner] Device: cuda
+[Learner] Resuming from checkpoints/train_ckpt_step156000.pt
+[Learner] Resumed at step 156000
+[Learner] Waiting for 1000 transitions in buffer...
+[Learner] Buffer ready: ~1897920 transitions (23724 files)
+[ReplayBuffer] Added 45495 transitions, buffer size=45495
+
+[Learner] === PHASE 1: Critic warmup (5000 steps) ===
+  Warmup 100/5000 | V=1.779 Q=1.711 V_loss=0.0040
+  Warmup 200/5000 | V=2.080 Q=2.036 V_loss=0.0026
+  Warmup 300/5000 | V=1.836 Q=1.804 V_loss=0.0021
+  Warmup 400/5000 | V=1.465 Q=1.457 V_loss=0.0036
+  Warmup 500/5000 | V=1.895 Q=1.887 V_loss=0.0027
+  Warmup 600/5000 | V=1.898 Q=1.870 V_loss=0.0023
+  Warmup 700/5000 | V=2.072 Q=2.055 V_loss=0.0023
+  Warmup 800/5000 | V=2.105 Q=2.106 V_loss=0.0025
+  Warmup 900/5000 | V=1.641 Q=1.619 V_loss=0.0024
+  Warmup 1000/5000 | V=2.204 Q=2.198 V_loss=0.0022
+  Warmup 1100/5000 | V=1.690 Q=1.674 V_loss=0.0022
+  Warmup 1200/5000 | V=2.090 Q=2.087 V_loss=0.0025
+  Warmup 1300/5000 | V=1.831 Q=1.816 V_loss=0.0025
+  Warmup 1400/5000 | V=1.848 Q=1.848 V_loss=0.0016
+  Warmup 1500/5000 | V=2.184 Q=2.193 V_loss=0.0016
+  Warmup 1600/5000 | V=1.801 Q=1.766 V_loss=0.0113
+  Warmup 1700/5000 | V=1.689 Q=1.684 V_loss=0.0023
+  Warmup 1800/5000 | V=1.788 Q=1.773 V_loss=0.0035
+  Warmup 1900/5000 | V=1.800 Q=1.832 V_loss=0.0018
+  Warmup 2000/5000 | V=1.998 Q=2.013 V_loss=0.0023
+  Warmup 2100/5000 | V=1.667 Q=1.679 V_loss=0.0023
+  Warmup 2200/5000 | V=1.941 Q=1.882 V_loss=0.0019
+  Warmup 2300/5000 | V=1.838 Q=1.854 V_loss=0.0028
+  Warmup 2400/5000 | V=1.999 Q=2.030 V_loss=0.0017
+  Warmup 2500/5000 | V=1.854 Q=1.812 V_loss=0.0017
+  Warmup 2600/5000 | V=1.894 Q=1.924 V_loss=0.0020
+  Warmup 2700/5000 | V=1.876 Q=1.869 V_loss=0.0017
+  Warmup 2800/5000 | V=1.842 Q=1.844 V_loss=0.0020
+  Warmup 2900/5000 | V=2.021 Q=2.056 V_loss=0.0019
+  Warmup 3000/5000 | V=1.714 Q=1.742 V_loss=0.0029
+  Warmup 3100/5000 | V=1.810 Q=1.820 V_loss=0.0021
+  Warmup 3200/5000 | V=1.641 Q=1.665 V_loss=0.0017
+  Warmup 3300/5000 | V=1.717 Q=1.688 V_loss=0.0015
+  Warmup 3400/5000 | V=1.817 Q=1.818 V_loss=0.0013
+  Warmup 3500/5000 | V=2.047 Q=2.097 V_loss=0.0031
+  Warmup 3600/5000 | V=1.827 Q=1.788 V_loss=0.0014
+  Warmup 3700/5000 | V=1.829 Q=1.820 V_loss=0.0022
+  Warmup 3800/5000 | V=2.121 Q=2.114 V_loss=0.0015
+  Warmup 3900/5000 | V=2.155 Q=2.128 V_loss=0.0016
+  Warmup 4000/5000 | V=1.840 Q=1.806 V_loss=0.0018
+  Warmup 4100/5000 | V=1.694 Q=1.694 V_loss=0.0015
+  Warmup 4200/5000 | V=1.974 Q=1.984 V_loss=0.0016
+  Warmup 4300/5000 | V=2.016 Q=1.979 V_loss=0.0017
+  Warmup 4400/5000 | V=1.941 Q=1.913 V_loss=0.0014
+  Warmup 4500/5000 | V=2.198 Q=2.179 V_loss=0.0013
+  Warmup 4600/5000 | V=1.513 Q=1.470 V_loss=0.0020
+  Warmup 4700/5000 | V=1.827 Q=1.836 V_loss=0.0021
+  Warmup 4800/5000 | V=2.160 Q=2.096 V_loss=0.0017
+  Warmup 4900/5000 | V=1.490 Q=1.479 V_loss=0.0027
+  Warmup 5000/5000 | V=1.718 Q=1.725 V_loss=0.0027
+[Learner] Initial policy saved — actors can begin collecting
+
+[Learner] === PHASE 2: ReinFlow training (2000000 steps) ===
+  Step 156100 | V=+1.951 Q=+1.960 actor_loss=+3.1188 ratio=10.000 adv_raw=-0.446±0.615 gnorm=0.00 buf=45,495
+  Step 156200 | V=+1.758 Q=+1.777 actor_loss=+2.7916 ratio=10.000 adv_raw=-0.349±0.495 gnorm=0.00 buf=45,495
+  Step 156300 | V=+2.268 Q=+2.278 actor_loss=+2.7593 ratio=10.000 adv_raw=-0.342±0.471 gnorm=0.00 buf=45,495
+  Step 156400 | V=+1.932 Q=+1.921 actor_loss=+2.7944 ratio=10.000 adv_raw=-0.332±0.452 gnorm=0.00 buf=45,495
+  Step 156500 | V=+1.682 Q=+1.692 actor_loss=+2.5095 ratio=10.000 adv_raw=-0.338±0.481 gnorm=0.00 buf=45,495
+  Step 156600 | V=+1.828 Q=+1.747 actor_loss=+2.8669 ratio=10.000 adv_raw=-0.376±0.498 gnorm=0.00 buf=45,495
+  Step 156700 | V=+1.850 Q=+1.870 actor_loss=+2.4633 ratio=10.000 adv_raw=-0.307±0.469 gnorm=0.00 buf=45,495
+  Step 156800 | V=+1.451 Q=+1.463 actor_loss=+2.8060 ratio=10.000 adv_raw=-0.344±0.465 gnorm=0.00 buf=45,495
+  Step 156900 | V=+2.173 Q=+2.171 actor_loss=+2.6617 ratio=10.000 adv_raw=-0.305±0.449 gnorm=0.00 buf=45,495
+  Step 157000 | V=+1.693 Q=+1.704 actor_loss=+2.7063 ratio=10.000 adv_raw=-0.296±0.404 gnorm=0.00 buf=45,495
+[Learner] Saved checkpoint → checkpoints/train_ckpt_step157000.pt
+  Step 157100 | V=+2.023 Q=+2.039 actor_loss=+2.9267 ratio=10.000 adv_raw=-0.331±0.478 gnorm=0.00 buf=45,495
+  Step 157200 | V=+1.800 Q=+1.799 actor_loss=+2.7761 ratio=10.000 adv_raw=-0.341±0.459 gnorm=0.00 buf=45,495
+  Step 157300 | V=+1.871 Q=+1.893 actor_loss=+2.5222 ratio=10.000 adv_raw=-0.259±0.384 gnorm=0.00 buf=45,495
+  Step 157400 | V=+1.880 Q=+1.866 actor_loss=+2.8233 ratio=10.000 adv_raw=-0.371±0.500 gnorm=0.00 buf=45,495
+  Step 157500 | V=+1.619 Q=+1.636 actor_loss=+2.5619 ratio=10.000 adv_raw=-0.309±0.444 gnorm=0.00 buf=45,495
+  Step 157600 | V=+1.889 Q=+1.845 actor_loss=+2.7139 ratio=10.000 adv_raw=-0.362±0.490 gnorm=0.00 buf=45,495
+  Step 157700 | V=+1.668 Q=+1.663 actor_loss=+2.5047 ratio=10.000 adv_raw=-0.301±0.404 gnorm=0.00 buf=45,495
+  Step 157800 | V=+1.691 Q=+1.691 actor_loss=+2.7369 ratio=10.000 adv_raw=-0.340±0.471 gnorm=0.00 buf=45,495
+  Step 157900 | V=+1.922 Q=+1.902 actor_loss=+2.8712 ratio=10.000 adv_raw=-0.351±0.430 gnorm=0.00 buf=45,495
+  Step 158000 | V=+1.734 Q=+1.729 actor_loss=+2.7752 ratio=10.000 adv_raw=-0.360±0.460 gnorm=0.00 buf=45,495
+[Learner] Saved checkpoint → checkpoints/train_ckpt_step158000.pt
+  Step 158100 | V=+1.763 Q=+1.756 actor_loss=+2.5131 ratio=10.000 adv_raw=-0.310±0.396 gnorm=0.00 buf=45,495
+  Step 158200 | V=+1.721 Q=+1.754 actor_loss=+2.5283 ratio=10.000 adv_raw=-0.305±0.432 gnorm=0.00 buf=45,495
+  Step 158300 | V=+1.656 Q=+1.603 actor_loss=+2.6767 ratio=10.000 adv_raw=-0.398±0.520 gnorm=0.00 buf=45,495
+  Step 158400 | V=+1.454 Q=+1.436 actor_loss=+2.6779 ratio=10.000 adv_raw=-0.354±0.471 gnorm=0.00 buf=45,495
+  Step 158500 | V=+1.659 Q=+1.668 actor_loss=+2.4755 ratio=10.000 adv_raw=-0.357±0.507 gnorm=0.00 buf=45,495
+  Step 158600 | V=+2.003 Q=+1.930 actor_loss=+2.8447 ratio=10.000 adv_raw=-0.372±0.462 gnorm=0.00 buf=45,495
+  Step 158700 | V=+1.664 Q=+1.676 actor_loss=+2.8032 ratio=10.000 adv_raw=-0.372±0.486 gnorm=0.00 buf=45,495
+  Step 158800 | V=+1.836 Q=+1.855 actor_loss=+2.8955 ratio=10.000 adv_raw=-0.420±0.607 gnorm=0.00 buf=45,495
+  Step 158900 | V=+1.712 Q=+1.671 actor_loss=+2.7230 ratio=10.000 adv_raw=-0.332±0.476 gnorm=0.00 buf=45,495
+  Step 159000 | V=+1.673 Q=+1.662 actor_loss=+2.6633 ratio=10.000 adv_raw=-0.334±0.530 gnorm=0.00 buf=45,495
+[Learner] Saved checkpoint → checkpoints/train_ckpt_step159000.pt
+  Step 159100 | V=+1.870 Q=+1.844 actor_loss=+2.7758 ratio=10.000 adv_raw=-0.325±0.470 gnorm=0.00 buf=45,495
+  Step 159200 | V=+1.649 Q=+1.621 actor_loss=+2.5028 ratio=10.000 adv_raw=-0.347±0.571 gnorm=0.00 buf=45,495
+  Step 159300 | V=+1.799 Q=+1.745 actor_loss=+2.6948 ratio=10.000 adv_raw=-0.357±0.583 gnorm=0.00 buf=45,495
+  Step 159400 | V=+1.997 Q=+1.971 actor_loss=+2.3355 ratio=10.000 adv_raw=-0.333±0.538 gnorm=0.00 buf=45,495
+  Step 159500 | V=+1.811 Q=+1.821 actor_loss=+2.1992 ratio=10.000 adv_raw=-0.297±0.455 gnorm=0.00 buf=45,495
+  Step 159600 | V=+1.871 Q=+1.876 actor_loss=+2.3767 ratio=10.000 adv_raw=-0.317±0.520 gnorm=0.00 buf=45,495
+  Step 159700 | V=+2.072 Q=+2.078 actor_loss=+2.5016 ratio=10.000 adv_raw=-0.375±0.544 gnorm=0.00 buf=45,495
+  Step 159800 | V=+1.937 Q=+1.945 actor_loss=+2.4721 ratio=10.000 adv_raw=-0.383±0.576 gnorm=0.00 buf=45,495
+  Step 159900 | V=+1.819 Q=+1.811 actor_loss=+2.4804 ratio=10.000 adv_raw=-0.325±0.518 gnorm=0.00 buf=45,495
+  Step 160000 | V=+2.028 Q=+1.989 actor_loss=+2.7151 ratio=10.000 adv_raw=-0.380±0.512 gnorm=0.00 buf=45,495
+[Learner] Saved checkpoint → checkpoints/train_ckpt_step160000.pt
+  Step 160100 | V=+2.075 Q=+2.060 actor_loss=+2.8302 ratio=10.000 adv_raw=-0.341±0.493 gnorm=0.00 buf=45,495
+  Step 160200 | V=+1.633 Q=+1.651 actor_loss=+2.8202 ratio=10.000 adv_raw=-0.352±0.493 gnorm=0.00 buf=45,495
+  Step 160300 | V=+1.684 Q=+1.709 actor_loss=+2.6507 ratio=10.000 adv_raw=-0.329±0.484 gnorm=0.00 buf=45,495
+  Step 160400 | V=+1.718 Q=+1.697 actor_loss=+2.7419 ratio=10.000 adv_raw=-0.331±0.439 gnorm=0.00 buf=45,495
+  Step 160500 | V=+1.485 Q=+1.490 actor_loss=+2.7307 ratio=10.000 adv_raw=-0.283±0.378 gnorm=0.00 buf=45,495
+  Step 160600 | V=+1.900 Q=+1.898 actor_loss=+2.8175 ratio=10.000 adv_raw=-0.254±0.376 gnorm=0.00 buf=45,495
+  Step 160700 | V=+1.778 Q=+1.800 actor_loss=+2.7196 ratio=10.000 adv_raw=-0.376±0.544 gnorm=0.00 buf=45,495
+  Step 160800 | V=+1.777 Q=+1.794 actor_loss=+2.6444 ratio=10.000 adv_raw=-0.306±0.503 gnorm=0.00 buf=45,495
