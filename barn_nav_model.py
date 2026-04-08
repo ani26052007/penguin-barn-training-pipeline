@@ -170,7 +170,7 @@ class ReinFlowNoiseNet(nn.Module):
         )
         # Bias toward small noise at init — avoids instability early in training
         with torch.no_grad():
-            self.net[-2].bias.fill_(-2.0)
+            self.net[-2].bias.fill_(0.5)
 
     def forward(self, t, x_t, context):
         # t: (B,1)  x_t: (B,2)  context: (B,D)

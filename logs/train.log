@@ -1,113 +1,218 @@
 [Learner] Device: cuda
-[Learner] Resuming from checkpoints/train_ckpt_step156000.pt
-[Learner] Resumed at step 156000
-[Learner] Waiting for 1000 transitions in buffer...
-[Learner] Buffer ready: ~1897920 transitions (23724 files)
-[ReplayBuffer] Added 45495 transitions, buffer size=45495
+[Learner] Warm-starting backbone from checkpoints/ADAC_best_model.pt
+[load_barn_checkpoint] Loaded 56/56 keys from checkpoints/ADAC_best_model.pt
+  epoch: 50  val_loss: 0.09779261804128464
+[Learner] V/Q heads: random init (trained from online data)
+[Learner] Waiting for 2000 transitions in buffer...
+[Learner] Buffer: 0 files (~0/2000)... waiting
+[Learner] Buffer: 0 files (~0/2000)... waiting
+[Learner] Buffer: 0 files (~0/2000)... waiting
+[Learner] Buffer: 0 files (~0/2000)... waiting
+[Learner] Buffer: 0 files (~0/2000)... waiting
+[Learner] Buffer: 0 files (~0/2000)... waiting
+[Learner] Buffer: 6 files (~480/2000)... waiting
+[Learner] Buffer: 9 files (~720/2000)... waiting
+[Learner] Buffer: 15 files (~1200/2000)... waiting
+[Learner] Buffer: 23 files (~1840/2000)... waiting
+[Learner] Buffer ready: ~2400 transitions (30 files)
+[ReplayBuffer] Added 91 transitions, buffer size=91
 
 [Learner] === PHASE 1: Critic warmup (5000 steps) ===
-  Warmup 100/5000 | V=1.779 Q=1.711 V_loss=0.0040
-  Warmup 200/5000 | V=2.080 Q=2.036 V_loss=0.0026
-  Warmup 300/5000 | V=1.836 Q=1.804 V_loss=0.0021
-  Warmup 400/5000 | V=1.465 Q=1.457 V_loss=0.0036
-  Warmup 500/5000 | V=1.895 Q=1.887 V_loss=0.0027
-  Warmup 600/5000 | V=1.898 Q=1.870 V_loss=0.0023
-  Warmup 700/5000 | V=2.072 Q=2.055 V_loss=0.0023
-  Warmup 800/5000 | V=2.105 Q=2.106 V_loss=0.0025
-  Warmup 900/5000 | V=1.641 Q=1.619 V_loss=0.0024
-  Warmup 1000/5000 | V=2.204 Q=2.198 V_loss=0.0022
-  Warmup 1100/5000 | V=1.690 Q=1.674 V_loss=0.0022
-  Warmup 1200/5000 | V=2.090 Q=2.087 V_loss=0.0025
-  Warmup 1300/5000 | V=1.831 Q=1.816 V_loss=0.0025
-  Warmup 1400/5000 | V=1.848 Q=1.848 V_loss=0.0016
-  Warmup 1500/5000 | V=2.184 Q=2.193 V_loss=0.0016
-  Warmup 1600/5000 | V=1.801 Q=1.766 V_loss=0.0113
-  Warmup 1700/5000 | V=1.689 Q=1.684 V_loss=0.0023
-  Warmup 1800/5000 | V=1.788 Q=1.773 V_loss=0.0035
-  Warmup 1900/5000 | V=1.800 Q=1.832 V_loss=0.0018
-  Warmup 2000/5000 | V=1.998 Q=2.013 V_loss=0.0023
-  Warmup 2100/5000 | V=1.667 Q=1.679 V_loss=0.0023
-  Warmup 2200/5000 | V=1.941 Q=1.882 V_loss=0.0019
-  Warmup 2300/5000 | V=1.838 Q=1.854 V_loss=0.0028
-  Warmup 2400/5000 | V=1.999 Q=2.030 V_loss=0.0017
-  Warmup 2500/5000 | V=1.854 Q=1.812 V_loss=0.0017
-  Warmup 2600/5000 | V=1.894 Q=1.924 V_loss=0.0020
-  Warmup 2700/5000 | V=1.876 Q=1.869 V_loss=0.0017
-  Warmup 2800/5000 | V=1.842 Q=1.844 V_loss=0.0020
-  Warmup 2900/5000 | V=2.021 Q=2.056 V_loss=0.0019
-  Warmup 3000/5000 | V=1.714 Q=1.742 V_loss=0.0029
-  Warmup 3100/5000 | V=1.810 Q=1.820 V_loss=0.0021
-  Warmup 3200/5000 | V=1.641 Q=1.665 V_loss=0.0017
-  Warmup 3300/5000 | V=1.717 Q=1.688 V_loss=0.0015
-  Warmup 3400/5000 | V=1.817 Q=1.818 V_loss=0.0013
-  Warmup 3500/5000 | V=2.047 Q=2.097 V_loss=0.0031
-  Warmup 3600/5000 | V=1.827 Q=1.788 V_loss=0.0014
-  Warmup 3700/5000 | V=1.829 Q=1.820 V_loss=0.0022
-  Warmup 3800/5000 | V=2.121 Q=2.114 V_loss=0.0015
-  Warmup 3900/5000 | V=2.155 Q=2.128 V_loss=0.0016
-  Warmup 4000/5000 | V=1.840 Q=1.806 V_loss=0.0018
-  Warmup 4100/5000 | V=1.694 Q=1.694 V_loss=0.0015
-  Warmup 4200/5000 | V=1.974 Q=1.984 V_loss=0.0016
-  Warmup 4300/5000 | V=2.016 Q=1.979 V_loss=0.0017
-  Warmup 4400/5000 | V=1.941 Q=1.913 V_loss=0.0014
-  Warmup 4500/5000 | V=2.198 Q=2.179 V_loss=0.0013
-  Warmup 4600/5000 | V=1.513 Q=1.470 V_loss=0.0020
-  Warmup 4700/5000 | V=1.827 Q=1.836 V_loss=0.0021
-  Warmup 4800/5000 | V=2.160 Q=2.096 V_loss=0.0017
-  Warmup 4900/5000 | V=1.490 Q=1.479 V_loss=0.0027
-  Warmup 5000/5000 | V=1.718 Q=1.725 V_loss=0.0027
-[Learner] Initial policy saved — actors can begin collecting
+[ReplayBuffer] Added 1 transitions, buffer size=92
+[ReplayBuffer] Added 1 transitions, buffer size=93
+[ReplayBuffer] Added 1 transitions, buffer size=94
+[ReplayBuffer] Added 1 transitions, buffer size=95
+[ReplayBuffer] Added 26 transitions, buffer size=121
+[ReplayBuffer] Added 16 transitions, buffer size=137
+[ReplayBuffer] Added 24 transitions, buffer size=161
+[ReplayBuffer] Added 33 transitions, buffer size=194
+[ReplayBuffer] Added 1 transitions, buffer size=195
+[ReplayBuffer] Added 1 transitions, buffer size=196
+[ReplayBuffer] Added 1 transitions, buffer size=197
+[ReplayBuffer] Added 1 transitions, buffer size=198
+[ReplayBuffer] Added 1 transitions, buffer size=199
+[ReplayBuffer] Added 1 transitions, buffer size=200
+[ReplayBuffer] Added 1 transitions, buffer size=201
+[ReplayBuffer] Added 1 transitions, buffer size=202
+[ReplayBuffer] Added 1 transitions, buffer size=203
+[ReplayBuffer] Added 1 transitions, buffer size=204
+[ReplayBuffer] Added 1 transitions, buffer size=205
+[ReplayBuffer] Added 1 transitions, buffer size=206
+[ReplayBuffer] Added 1 transitions, buffer size=207
+[ReplayBuffer] Added 1 transitions, buffer size=208
+[ReplayBuffer] Added 1 transitions, buffer size=209
+[ReplayBuffer] Added 1 transitions, buffer size=210
+[ReplayBuffer] Added 1 transitions, buffer size=211
+[ReplayBuffer] Added 12 transitions, buffer size=223
+[ReplayBuffer] Added 14 transitions, buffer size=237
+[ReplayBuffer] Added 1 transitions, buffer size=238
+[ReplayBuffer] Added 35 transitions, buffer size=273
+  Warmup   100/5000 | V=-0.059 Q=-0.697 V_loss=0.0000 Q_loss=4.2715 TD=-0.553
+  Warmup   150/5000 | V=-0.108 Q=-0.049 V_loss=0.0001 Q_loss=1.7955 TD=-0.264
+  Warmup   200/5000 | V=-0.219 Q=-0.338 V_loss=0.0007 Q_loss=1.9762 TD=-0.314
+  Warmup   250/5000 | V=-0.252 Q=-0.322 V_loss=0.0013 Q_loss=2.7891 TD=-0.411
+  Warmup   300/5000 | V=-0.320 Q=-0.353 V_loss=0.0029 Q_loss=2.2469 TD=-0.389
+  Warmup   350/5000 | V=-0.317 Q=-0.321 V_loss=0.0047 Q_loss=2.2073 TD=-0.291
+  Warmup   400/5000 | V=-0.420 Q=-0.347 V_loss=0.0062 Q_loss=2.2712 TD=-0.306
+  Warmup   450/5000 | V=-0.442 Q=-0.067 V_loss=0.0075 Q_loss=1.7258 TD=-0.346
+  Warmup   500/5000 | V=-0.290 Q=-0.277 V_loss=0.0109 Q_loss=2.1025 TD=-0.249
+[ReplayBuffer] Added 742 transitions, buffer size=1015
+  Warmup   550/5000 | V=-0.066 Q=+0.127 V_loss=0.0147 Q_loss=0.9872 TD=+0.078
+  Warmup   600/5000 | V=+0.018 Q=+0.283 V_loss=0.0145 Q_loss=1.1444 TD=+0.219
+  Warmup   650/5000 | V=+0.123 Q=+0.255 V_loss=0.0126 Q_loss=1.2390 TD=+0.203
+  Warmup   700/5000 | V=+0.021 Q=+0.044 V_loss=0.0152 Q_loss=1.6642 TD=-0.039
+  Warmup   750/5000 | V=+0.152 Q=+0.211 V_loss=0.0125 Q_loss=0.8943 TD=+0.336
+  Warmup   800/5000 | V=+0.013 Q=+0.277 V_loss=0.0126 Q_loss=1.3043 TD=+0.052
+  Warmup   850/5000 | V=+0.070 Q=+0.200 V_loss=0.0116 Q_loss=1.2617 TD=+0.208
+  Warmup   900/5000 | V=+0.143 Q=+0.219 V_loss=0.0105 Q_loss=1.3778 TD=+0.220
+  Warmup   950/5000 | V=+0.181 Q=+0.281 V_loss=0.0090 Q_loss=1.4166 TD=+0.349
+  Warmup  1000/5000 | V=+0.212 Q=+0.550 V_loss=0.0088 Q_loss=0.6548 TD=+0.469
+[ReplayBuffer] Added 706 transitions, buffer size=1721
+  Warmup  1050/5000 | V=+0.032 Q=+0.100 V_loss=0.0092 Q_loss=1.7003 TD=+0.125
+  Warmup  1100/5000 | V=+0.353 Q=+0.517 V_loss=0.0091 Q_loss=0.6785 TD=+0.552
+  Warmup  1150/5000 | V=+0.259 Q=+0.425 V_loss=0.0106 Q_loss=1.3524 TD=+0.381
+  Warmup  1200/5000 | V=+0.385 Q=+0.526 V_loss=0.0088 Q_loss=0.7245 TD=+0.553
+  Warmup  1250/5000 | V=+0.249 Q=+0.494 V_loss=0.0074 Q_loss=2.0064 TD=+0.343
+  Warmup  1300/5000 | V=+0.195 Q=+0.502 V_loss=0.0086 Q_loss=1.2103 TD=+0.322
+  Warmup  1350/5000 | V=+0.463 Q=+0.587 V_loss=0.0103 Q_loss=1.2111 TD=+0.623
+  Warmup  1400/5000 | V=+0.325 Q=+0.532 V_loss=0.0085 Q_loss=1.1257 TD=+0.432
+  Warmup  1450/5000 | V=+0.550 Q=+0.590 V_loss=0.0068 Q_loss=1.1727 TD=+0.709
+  Warmup  1500/5000 | V=+0.286 Q=+0.477 V_loss=0.0075 Q_loss=2.3061 TD=+0.348
+[ReplayBuffer] Added 314 transitions, buffer size=2035
+  Warmup  1550/5000 | V=+0.412 Q=+0.549 V_loss=0.0084 Q_loss=0.8102 TD=+0.523
+  Warmup  1600/5000 | V=+0.670 Q=+0.772 V_loss=0.0090 Q_loss=0.7464 TD=+0.740
+  Warmup  1650/5000 | V=+0.698 Q=+0.684 V_loss=0.0096 Q_loss=1.0834 TD=+0.723
+  Warmup  1700/5000 | V=+0.780 Q=+0.912 V_loss=0.0081 Q_loss=0.8857 TD=+0.966
+  Warmup  1750/5000 | V=+0.634 Q=+0.921 V_loss=0.0091 Q_loss=0.8835 TD=+0.770
+  Warmup  1800/5000 | V=+0.679 Q=+0.900 V_loss=0.0068 Q_loss=0.8793 TD=+0.905
+  Warmup  1850/5000 | V=+0.826 Q=+0.872 V_loss=0.0081 Q_loss=1.3817 TD=+0.931
+  Warmup  1900/5000 | V=+0.666 Q=+1.046 V_loss=0.0117 Q_loss=1.4108 TD=+0.815
+  Warmup  1950/5000 | V=+0.782 Q=+0.832 V_loss=0.0105 Q_loss=1.2159 TD=+1.006
+  Warmup  2000/5000 | V=+0.814 Q=+0.974 V_loss=0.0093 Q_loss=2.1763 TD=+0.905
+[ReplayBuffer] Added 558 transitions, buffer size=2593
+  Warmup  2050/5000 | V=+0.552 Q=+0.692 V_loss=0.0086 Q_loss=1.0435 TD=+0.649
+  Warmup  2100/5000 | V=+0.741 Q=+0.838 V_loss=0.0114 Q_loss=0.9108 TD=+0.858
+  Warmup  2150/5000 | V=+0.660 Q=+0.718 V_loss=0.0105 Q_loss=0.9739 TD=+0.798
+  Warmup  2200/5000 | V=+0.713 Q=+0.900 V_loss=0.0095 Q_loss=1.4322 TD=+0.865
+  Warmup  2250/5000 | V=+0.807 Q=+0.812 V_loss=0.0075 Q_loss=1.3880 TD=+0.910
+  Warmup  2300/5000 | V=+1.106 Q=+1.224 V_loss=0.0097 Q_loss=1.2863 TD=+1.232
+  Warmup  2350/5000 | V=+0.939 Q=+1.077 V_loss=0.0089 Q_loss=1.2394 TD=+1.013
+  Warmup  2400/5000 | V=+0.967 Q=+0.879 V_loss=0.0115 Q_loss=1.5733 TD=+0.963
+  Warmup  2450/5000 | V=+1.011 Q=+1.104 V_loss=0.0086 Q_loss=1.8538 TD=+1.098
+  Warmup  2500/5000 | V=+0.902 Q=+0.991 V_loss=0.0074 Q_loss=1.1320 TD=+1.018
+[ReplayBuffer] Added 917 transitions, buffer size=3510
+  Warmup  2550/5000 | V=+0.831 Q=+0.895 V_loss=0.0124 Q_loss=1.4292 TD=+0.842
+  Warmup  2600/5000 | V=+0.965 Q=+1.115 V_loss=0.0098 Q_loss=1.1242 TD=+1.095
+  Warmup  2650/5000 | V=+1.196 Q=+1.250 V_loss=0.0073 Q_loss=1.2256 TD=+1.274
+  Warmup  2700/5000 | V=+0.797 Q=+0.985 V_loss=0.0084 Q_loss=1.5724 TD=+0.861
+  Warmup  2750/5000 | V=+1.176 Q=+1.294 V_loss=0.0089 Q_loss=1.6682 TD=+1.215
+  Warmup  2800/5000 | V=+1.093 Q=+1.047 V_loss=0.0094 Q_loss=1.3051 TD=+1.180
+  Warmup  2850/5000 | V=+1.147 Q=+1.137 V_loss=0.0079 Q_loss=1.3278 TD=+1.199
+  Warmup  2900/5000 | V=+1.390 Q=+1.649 V_loss=0.0194 Q_loss=1.0856 TD=+1.719
+  Warmup  2950/5000 | V=+0.911 Q=+1.088 V_loss=0.0101 Q_loss=0.9253 TD=+1.134
+  Warmup  3000/5000 | V=+1.293 Q=+1.504 V_loss=0.0089 Q_loss=1.5469 TD=+1.333
+[ReplayBuffer] Added 410 transitions, buffer size=3920
+  Warmup  3050/5000 | V=+1.069 Q=+1.064 V_loss=0.0097 Q_loss=1.1149 TD=+1.285
+  Warmup  3100/5000 | V=+0.997 Q=+1.020 V_loss=0.0086 Q_loss=1.6444 TD=+1.109
+  Warmup  3150/5000 | V=+1.576 Q=+1.737 V_loss=0.0078 Q_loss=0.9807 TD=+1.760
+  Warmup  3200/5000 | V=+1.402 Q=+1.317 V_loss=0.0088 Q_loss=1.2818 TD=+1.440
+  Warmup  3250/5000 | V=+1.577 Q=+1.623 V_loss=0.0069 Q_loss=1.6554 TD=+1.646
+  Warmup  3300/5000 | V=+1.291 Q=+1.380 V_loss=0.0106 Q_loss=1.7393 TD=+1.437
+  Warmup  3350/5000 | V=+1.382 Q=+1.485 V_loss=0.0089 Q_loss=1.3078 TD=+1.650
+  Warmup  3400/5000 | V=+1.470 Q=+1.683 V_loss=0.0076 Q_loss=1.6303 TD=+1.511
+  Warmup  3450/5000 | V=+1.891 Q=+2.109 V_loss=0.0091 Q_loss=1.4263 TD=+2.032
+  Warmup  3500/5000 | V=+1.895 Q=+1.893 V_loss=0.0110 Q_loss=1.4470 TD=+2.000
+[ReplayBuffer] Added 968 transitions, buffer size=4888
+  Warmup  3550/5000 | V=+1.701 Q=+1.792 V_loss=0.0106 Q_loss=2.0825 TD=+1.704
+  Warmup  3600/5000 | V=+1.973 Q=+2.130 V_loss=0.0121 Q_loss=1.6153 TD=+2.148
+  Warmup  3650/5000 | V=+1.883 Q=+1.975 V_loss=0.0089 Q_loss=1.3413 TD=+2.112
+  Warmup  3700/5000 | V=+1.810 Q=+1.944 V_loss=0.0094 Q_loss=1.1678 TD=+1.844
+  Warmup  3750/5000 | V=+1.795 Q=+1.827 V_loss=0.0080 Q_loss=1.4037 TD=+1.881
+  Warmup  3800/5000 | V=+2.050 Q=+2.054 V_loss=0.0074 Q_loss=2.0796 TD=+2.121
+  Warmup  3850/5000 | V=+1.648 Q=+1.808 V_loss=0.0093 Q_loss=1.0788 TD=+1.687
+  Warmup  3900/5000 | V=+1.771 Q=+1.901 V_loss=0.0068 Q_loss=1.5112 TD=+1.970
+  Warmup  3950/5000 | V=+1.908 Q=+1.998 V_loss=0.0150 Q_loss=2.1424 TD=+2.078
+  Warmup  4000/5000 | V=+2.018 Q=+2.053 V_loss=0.0084 Q_loss=1.4967 TD=+2.176
+[ReplayBuffer] Added 501 transitions, buffer size=5389
+  Warmup  4050/5000 | V=+2.081 Q=+2.188 V_loss=0.0128 Q_loss=1.6019 TD=+2.273
+  Warmup  4100/5000 | V=+2.120 Q=+2.200 V_loss=0.0086 Q_loss=1.5476 TD=+2.272
+  Warmup  4150/5000 | V=+1.704 Q=+1.850 V_loss=0.0105 Q_loss=1.3543 TD=+1.888
+  Warmup  4200/5000 | V=+1.810 Q=+1.705 V_loss=0.0118 Q_loss=2.1357 TD=+1.762
+  Warmup  4250/5000 | V=+2.071 Q=+2.201 V_loss=0.0101 Q_loss=1.6487 TD=+2.289
+  Warmup  4300/5000 | V=+2.394 Q=+2.556 V_loss=0.0090 Q_loss=1.6775 TD=+2.411
+  Warmup  4350/5000 | V=+1.834 Q=+1.884 V_loss=0.0072 Q_loss=1.5694 TD=+1.948
+  Warmup  4400/5000 | V=+1.726 Q=+1.722 V_loss=0.0089 Q_loss=2.3640 TD=+1.723
+  Warmup  4450/5000 | V=+2.163 Q=+2.252 V_loss=0.0084 Q_loss=1.7795 TD=+2.256
+  Warmup  4500/5000 | V=+2.614 Q=+2.803 V_loss=0.0090 Q_loss=2.7413 TD=+2.622
+[ReplayBuffer] Added 831 transitions, buffer size=6220
+  Warmup  4550/5000 | V=+2.586 Q=+2.839 V_loss=0.0082 Q_loss=1.7862 TD=+2.665
+  Warmup  4600/5000 | V=+2.689 Q=+2.840 V_loss=0.0084 Q_loss=2.1919 TD=+2.786
+  Warmup  4650/5000 | V=+2.560 Q=+2.614 V_loss=0.0100 Q_loss=1.9990 TD=+2.615
+  Warmup  4700/5000 | V=+2.324 Q=+2.387 V_loss=0.0068 Q_loss=2.0527 TD=+2.551
+  Warmup  4750/5000 | V=+3.158 Q=+3.045 V_loss=0.0095 Q_loss=2.4541 TD=+3.317
+  Warmup  4800/5000 | V=+2.063 Q=+1.989 V_loss=0.0102 Q_loss=2.3003 TD=+2.079
+  Warmup  4850/5000 | V=+2.764 Q=+2.827 V_loss=0.0082 Q_loss=2.0109 TD=+2.760
+  Warmup  4900/5000 | V=+2.542 Q=+2.585 V_loss=0.0111 Q_loss=1.8320 TD=+2.620
+  Warmup  4950/5000 | V=+2.366 Q=+2.606 V_loss=0.0168 Q_loss=2.1520 TD=+2.570
+  Warmup  5000/5000 | V=+2.265 Q=+2.406 V_loss=0.0093 Q_loss=2.4929 TD=+2.235
+[ReplayBuffer] Added 643 transitions, buffer size=6863
 
-[Learner] === PHASE 2: ReinFlow training (2000000 steps) ===
-  Step 156100 | V=+1.951 Q=+1.960 actor_loss=+3.1188 ratio=10.000 adv_raw=-0.446±0.615 gnorm=0.00 buf=45,495
-  Step 156200 | V=+1.758 Q=+1.777 actor_loss=+2.7916 ratio=10.000 adv_raw=-0.349±0.495 gnorm=0.00 buf=45,495
-  Step 156300 | V=+2.268 Q=+2.278 actor_loss=+2.7593 ratio=10.000 adv_raw=-0.342±0.471 gnorm=0.00 buf=45,495
-  Step 156400 | V=+1.932 Q=+1.921 actor_loss=+2.7944 ratio=10.000 adv_raw=-0.332±0.452 gnorm=0.00 buf=45,495
-  Step 156500 | V=+1.682 Q=+1.692 actor_loss=+2.5095 ratio=10.000 adv_raw=-0.338±0.481 gnorm=0.00 buf=45,495
-  Step 156600 | V=+1.828 Q=+1.747 actor_loss=+2.8669 ratio=10.000 adv_raw=-0.376±0.498 gnorm=0.00 buf=45,495
-  Step 156700 | V=+1.850 Q=+1.870 actor_loss=+2.4633 ratio=10.000 adv_raw=-0.307±0.469 gnorm=0.00 buf=45,495
-  Step 156800 | V=+1.451 Q=+1.463 actor_loss=+2.8060 ratio=10.000 adv_raw=-0.344±0.465 gnorm=0.00 buf=45,495
-  Step 156900 | V=+2.173 Q=+2.171 actor_loss=+2.6617 ratio=10.000 adv_raw=-0.305±0.449 gnorm=0.00 buf=45,495
-  Step 157000 | V=+1.693 Q=+1.704 actor_loss=+2.7063 ratio=10.000 adv_raw=-0.296±0.404 gnorm=0.00 buf=45,495
-[Learner] Saved checkpoint → checkpoints/train_ckpt_step157000.pt
-  Step 157100 | V=+2.023 Q=+2.039 actor_loss=+2.9267 ratio=10.000 adv_raw=-0.331±0.478 gnorm=0.00 buf=45,495
-  Step 157200 | V=+1.800 Q=+1.799 actor_loss=+2.7761 ratio=10.000 adv_raw=-0.341±0.459 gnorm=0.00 buf=45,495
-  Step 157300 | V=+1.871 Q=+1.893 actor_loss=+2.5222 ratio=10.000 adv_raw=-0.259±0.384 gnorm=0.00 buf=45,495
-  Step 157400 | V=+1.880 Q=+1.866 actor_loss=+2.8233 ratio=10.000 adv_raw=-0.371±0.500 gnorm=0.00 buf=45,495
-  Step 157500 | V=+1.619 Q=+1.636 actor_loss=+2.5619 ratio=10.000 adv_raw=-0.309±0.444 gnorm=0.00 buf=45,495
-  Step 157600 | V=+1.889 Q=+1.845 actor_loss=+2.7139 ratio=10.000 adv_raw=-0.362±0.490 gnorm=0.00 buf=45,495
-  Step 157700 | V=+1.668 Q=+1.663 actor_loss=+2.5047 ratio=10.000 adv_raw=-0.301±0.404 gnorm=0.00 buf=45,495
-  Step 157800 | V=+1.691 Q=+1.691 actor_loss=+2.7369 ratio=10.000 adv_raw=-0.340±0.471 gnorm=0.00 buf=45,495
-  Step 157900 | V=+1.922 Q=+1.902 actor_loss=+2.8712 ratio=10.000 adv_raw=-0.351±0.430 gnorm=0.00 buf=45,495
-  Step 158000 | V=+1.734 Q=+1.729 actor_loss=+2.7752 ratio=10.000 adv_raw=-0.360±0.460 gnorm=0.00 buf=45,495
-[Learner] Saved checkpoint → checkpoints/train_ckpt_step158000.pt
-  Step 158100 | V=+1.763 Q=+1.756 actor_loss=+2.5131 ratio=10.000 adv_raw=-0.310±0.396 gnorm=0.00 buf=45,495
-  Step 158200 | V=+1.721 Q=+1.754 actor_loss=+2.5283 ratio=10.000 adv_raw=-0.305±0.432 gnorm=0.00 buf=45,495
-  Step 158300 | V=+1.656 Q=+1.603 actor_loss=+2.6767 ratio=10.000 adv_raw=-0.398±0.520 gnorm=0.00 buf=45,495
-  Step 158400 | V=+1.454 Q=+1.436 actor_loss=+2.6779 ratio=10.000 adv_raw=-0.354±0.471 gnorm=0.00 buf=45,495
-  Step 158500 | V=+1.659 Q=+1.668 actor_loss=+2.4755 ratio=10.000 adv_raw=-0.357±0.507 gnorm=0.00 buf=45,495
-  Step 158600 | V=+2.003 Q=+1.930 actor_loss=+2.8447 ratio=10.000 adv_raw=-0.372±0.462 gnorm=0.00 buf=45,495
-  Step 158700 | V=+1.664 Q=+1.676 actor_loss=+2.8032 ratio=10.000 adv_raw=-0.372±0.486 gnorm=0.00 buf=45,495
-  Step 158800 | V=+1.836 Q=+1.855 actor_loss=+2.8955 ratio=10.000 adv_raw=-0.420±0.607 gnorm=0.00 buf=45,495
-  Step 158900 | V=+1.712 Q=+1.671 actor_loss=+2.7230 ratio=10.000 adv_raw=-0.332±0.476 gnorm=0.00 buf=45,495
-  Step 159000 | V=+1.673 Q=+1.662 actor_loss=+2.6633 ratio=10.000 adv_raw=-0.334±0.530 gnorm=0.00 buf=45,495
-[Learner] Saved checkpoint → checkpoints/train_ckpt_step159000.pt
-  Step 159100 | V=+1.870 Q=+1.844 actor_loss=+2.7758 ratio=10.000 adv_raw=-0.325±0.470 gnorm=0.00 buf=45,495
-  Step 159200 | V=+1.649 Q=+1.621 actor_loss=+2.5028 ratio=10.000 adv_raw=-0.347±0.571 gnorm=0.00 buf=45,495
-  Step 159300 | V=+1.799 Q=+1.745 actor_loss=+2.6948 ratio=10.000 adv_raw=-0.357±0.583 gnorm=0.00 buf=45,495
-  Step 159400 | V=+1.997 Q=+1.971 actor_loss=+2.3355 ratio=10.000 adv_raw=-0.333±0.538 gnorm=0.00 buf=45,495
-  Step 159500 | V=+1.811 Q=+1.821 actor_loss=+2.1992 ratio=10.000 adv_raw=-0.297±0.455 gnorm=0.00 buf=45,495
-  Step 159600 | V=+1.871 Q=+1.876 actor_loss=+2.3767 ratio=10.000 adv_raw=-0.317±0.520 gnorm=0.00 buf=45,495
-  Step 159700 | V=+2.072 Q=+2.078 actor_loss=+2.5016 ratio=10.000 adv_raw=-0.375±0.544 gnorm=0.00 buf=45,495
-  Step 159800 | V=+1.937 Q=+1.945 actor_loss=+2.4721 ratio=10.000 adv_raw=-0.383±0.576 gnorm=0.00 buf=45,495
-  Step 159900 | V=+1.819 Q=+1.811 actor_loss=+2.4804 ratio=10.000 adv_raw=-0.325±0.518 gnorm=0.00 buf=45,495
-  Step 160000 | V=+2.028 Q=+1.989 actor_loss=+2.7151 ratio=10.000 adv_raw=-0.380±0.512 gnorm=0.00 buf=45,495
-[Learner] Saved checkpoint → checkpoints/train_ckpt_step160000.pt
-  Step 160100 | V=+2.075 Q=+2.060 actor_loss=+2.8302 ratio=10.000 adv_raw=-0.341±0.493 gnorm=0.00 buf=45,495
-  Step 160200 | V=+1.633 Q=+1.651 actor_loss=+2.8202 ratio=10.000 adv_raw=-0.352±0.493 gnorm=0.00 buf=45,495
-  Step 160300 | V=+1.684 Q=+1.709 actor_loss=+2.6507 ratio=10.000 adv_raw=-0.329±0.484 gnorm=0.00 buf=45,495
-  Step 160400 | V=+1.718 Q=+1.697 actor_loss=+2.7419 ratio=10.000 adv_raw=-0.331±0.439 gnorm=0.00 buf=45,495
-  Step 160500 | V=+1.485 Q=+1.490 actor_loss=+2.7307 ratio=10.000 adv_raw=-0.283±0.378 gnorm=0.00 buf=45,495
-  Step 160600 | V=+1.900 Q=+1.898 actor_loss=+2.8175 ratio=10.000 adv_raw=-0.254±0.376 gnorm=0.00 buf=45,495
-  Step 160700 | V=+1.778 Q=+1.800 actor_loss=+2.7196 ratio=10.000 adv_raw=-0.376±0.544 gnorm=0.00 buf=45,495
-  Step 160800 | V=+1.777 Q=+1.794 actor_loss=+2.6444 ratio=10.000 adv_raw=-0.306±0.503 gnorm=0.00 buf=45,495
+[Learner] === PHASE 2: ReinFlow training (500000 steps) ===
+[Learner] Backbone will be frozen for first 20000 steps of Phase 2.
+[Learner] Backbone FROZEN: 941,408 params frozen, 166,018 params free (flow head only)
+  Step     50 | V=+2.210 Q=+2.335 actor_loss=+0.3326 ratio=0.372 ratio_max=10.00 adv_raw=+0.064±0.259 gnorm=0.06 logp=-11.78 buf=6,863 [FROZEN]
+[ReplayBuffer] Added 271 transitions, buffer size=7134
+[ReplayBuffer] Added 190 transitions, buffer size=7324
+  Step    100 | V=+3.088 Q=+3.455 actor_loss=+0.3054 ratio=0.058 ratio_max=10.00 adv_raw=+0.103±0.242 gnorm=0.00 logp=-16.78 buf=7,324 [FROZEN]
+  ⚠ PPO ratio=0.06 out of range — flow_steps in actor vs learner may be mismatched!
+[ReplayBuffer] Added 124 transitions, buffer size=7448
+  Step    150 | V=+2.948 Q=+3.125 actor_loss=+0.2547 ratio=0.011 ratio_max=1.32 adv_raw=+0.074±0.315 gnorm=0.01 logp=-18.15 buf=7,448 [FROZEN]
+  ⚠ PPO ratio=0.01 out of range — flow_steps in actor vs learner may be mismatched!
+[ReplayBuffer] Added 56 transitions, buffer size=7504
+  Step    200 | V=+2.570 Q=+2.837 actor_loss=+0.2805 ratio=0.076 ratio_max=10.00 adv_raw=+0.112±0.287 gnorm=0.00 logp=-17.84 buf=7,504 [FROZEN]
+  ⚠ PPO ratio=0.08 out of range — flow_steps in actor vs learner may be mismatched!
+[ReplayBuffer] Added 147 transitions, buffer size=7651
+  Step    250 | V=+2.652 Q=+2.767 actor_loss=+0.2936 ratio=0.024 ratio_max=5.64 adv_raw=+0.137±0.277 gnorm=0.00 logp=-19.08 buf=7,651 [FROZEN]
+  ⚠ PPO ratio=0.02 out of range — flow_steps in actor vs learner may be mismatched!
+[ReplayBuffer] Added 378 transitions, buffer size=8029
+  Step    300 | V=+2.694 Q=+2.693 actor_loss=+0.2534 ratio=0.018 ratio_max=2.77 adv_raw=+0.080±0.289 gnorm=0.00 logp=-18.92 buf=8,029 [FROZEN]
+  ⚠ PPO ratio=0.02 out of range — flow_steps in actor vs learner may be mismatched!
+[ReplayBuffer] Added 197 transitions, buffer size=8226
+  Step    350 | V=+2.601 Q=+2.821 actor_loss=+0.3350 ratio=0.034 ratio_max=8.48 adv_raw=+0.115±0.301 gnorm=0.00 logp=-19.13 buf=8,226 [FROZEN]
+  ⚠ PPO ratio=0.03 out of range — flow_steps in actor vs learner may be mismatched!
+[ReplayBuffer] Added 367 transitions, buffer size=8593
+  Step    400 | V=+2.773 Q=+2.843 actor_loss=+0.2315 ratio=0.004 ratio_max=0.95 adv_raw=+0.090±0.376 gnorm=0.00 logp=-19.06 buf=8,593 [FROZEN]
+  ⚠ PPO ratio=0.00 out of range — flow_steps in actor vs learner may be mismatched!
+[ReplayBuffer] Added 93 transitions, buffer size=8686
+  Step    450 | V=+3.281 Q=+3.127 actor_loss=+0.2587 ratio=0.000 ratio_max=0.00 adv_raw=+0.086±0.332 gnorm=0.00 logp=-19.39 buf=8,686 [FROZEN]
+  ⚠ PPO ratio=0.00 out of range — flow_steps in actor vs learner may be mismatched!
+[ReplayBuffer] Added 138 transitions, buffer size=8824
+  Step    500 | V=+3.210 Q=+3.178 actor_loss=+0.3021 ratio=0.004 ratio_max=0.51 adv_raw=+0.093±0.277 gnorm=0.00 logp=-19.13 buf=8,824 [FROZEN]
+  ⚠ PPO ratio=0.00 out of range — flow_steps in actor vs learner may be mismatched!
+[ReplayBuffer] Added 160 transitions, buffer size=8984
+  Step    550 | V=+2.254 Q=+2.546 actor_loss=+0.2661 ratio=0.001 ratio_max=0.08 adv_raw=+0.092±0.279 gnorm=0.00 logp=-19.00 buf=8,984 [FROZEN]
+  ⚠ PPO ratio=0.00 out of range — flow_steps in actor vs learner may be mismatched!
+[ReplayBuffer] Added 120 transitions, buffer size=9104
+  Step    600 | V=+3.064 Q=+3.365 actor_loss=+0.2699 ratio=0.002 ratio_max=0.15 adv_raw=+0.094±0.305 gnorm=0.00 logp=-19.48 buf=9,104 [FROZEN]
+  ⚠ PPO ratio=0.00 out of range — flow_steps in actor vs learner may be mismatched!
+[ReplayBuffer] Added 188 transitions, buffer size=9292
+  Step    650 | V=+2.757 Q=+2.940 actor_loss=+0.2950 ratio=0.001 ratio_max=0.03 adv_raw=+0.102±0.320 gnorm=0.00 logp=-19.06 buf=9,292 [FROZEN]
+  ⚠ PPO ratio=0.00 out of range — flow_steps in actor vs learner may be mismatched!
+[ReplayBuffer] Added 82 transitions, buffer size=9374
+  Step    700 | V=+3.121 Q=+3.225 actor_loss=+0.2572 ratio=0.004 ratio_max=0.58 adv_raw=+0.085±0.325 gnorm=0.00 logp=-19.31 buf=9,374 [FROZEN]
+  ⚠ PPO ratio=0.00 out of range — flow_steps in actor vs learner may be mismatched!
+[ReplayBuffer] Added 32 transitions, buffer size=9406
+[ReplayBuffer] Added 218 transitions, buffer size=9624
+  Step    750 | V=+2.848 Q=+3.179 actor_loss=+0.2874 ratio=0.001 ratio_max=0.06 adv_raw=+0.089±0.267 gnorm=0.00 logp=-19.16 buf=9,624 [FROZEN]
+  ⚠ PPO ratio=0.00 out of range — flow_steps in actor vs learner may be mismatched!
+[ReplayBuffer] Added 180 transitions, buffer size=9804
+  Step    800 | V=+3.251 Q=+3.108 actor_loss=+0.2303 ratio=0.014 ratio_max=3.20 adv_raw=+0.048±0.372 gnorm=0.00 logp=-19.11 buf=9,804 [FROZEN]
+  ⚠ PPO ratio=0.01 out of range — flow_steps in actor vs learner may be mismatched!
+[ReplayBuffer] Added 109 transitions, buffer size=9913
+  Step    850 | V=+3.006 Q=+3.020 actor_loss=+0.2894 ratio=0.001 ratio_max=0.22 adv_raw=+0.101±0.270 gnorm=0.00 logp=-19.19 buf=9,913 [FROZEN]
+  ⚠ PPO ratio=0.00 out of range — flow_steps in actor vs learner may be mismatched!
+[ReplayBuffer] Added 207 transitions, buffer size=10120
+  Step    900 | V=+3.027 Q=+3.212 actor_loss=+0.2714 ratio=0.004 ratio_max=0.47 adv_raw=+0.075±0.286 gnorm=0.00 logp=-18.94 buf=10,120 [FROZEN]
+  ⚠ PPO ratio=0.00 out of range — flow_steps in actor vs learner may be mismatched!
+[ReplayBuffer] Added 72 transitions, buffer size=10192
+  Step    950 | V=+3.003 Q=+3.204 actor_loss=+0.3103 ratio=0.003 ratio_max=0.49 adv_raw=+0.098±0.259 gnorm=0.00 logp=-18.98 buf=10,192 [FROZEN]
