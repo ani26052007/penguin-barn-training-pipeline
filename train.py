@@ -322,7 +322,7 @@ def main():
 
         # ── Actor update (ReinFlow PPO) ────────────────────────────────────────
         for _ in range(actor_updates):
-            batch  = replay_buffer.sample(batch_size, device=device)
+            batch  = replay_buffer.sample_recent(batch_size, device=device)
             a_logs = update_actor(batch, model, noise_net,
                                   v_targ, q_targ,
                                   opt_actor, opt_noise, cfg)
@@ -349,11 +349,24 @@ def main():
                   f"{'[FROZEN]' if backbone_frozen else '[FREE]'}")
 
             # PPO ratio sanity check
-            if a_logs['ratio_mean'] > 3.0 or a_logs['ratio_mean'] < 0.3:
-                print(f"  ⚠ PPO ratio={a_logs['ratio_mean']:.2f} out of range — "
-                      "flow_steps in actor vs learner may be mismatched!")
-
+            if a_logs['ratio_mean'] > 5.0:
+                print(f"  ⚠ PPO ratio={a_logs['ratio_mean']:.2f} too HIGH — "
+                      "policy changed too fast, reduce lr_actor.")
+            elif a_logs['ratio_mean'] < 0.05:
+                print(f"  ⚠ PPO ratio={a_logs['ratio_mean']:.4f} near ZERO — "
+                      "data is too stale (reduce policy_save_every) or "
+                      "noise_net sigma init is wrong.")
+            elif a_logs['ratio_mean'] < 0.3:
+                print(f"  ℹ PPO ratio={a_logs['ratio_mean']:.2f} slightly low — "
+                      "data is mildly stale, acceptable during ramp-up.")
+                
         # ── Save policy for actors ─────────────────────────────────────────────
+        # policy_latest.pt → actors (frequent, lightweight — no V/Q heads)
+        policy_save_every = cfg.get('policy_save_every', 100)
+        if step % policy_save_every == 0:
+            save_policy(model, noise_net, args.buffer_path, step, cfg, extra=None)
+
+        # Full checkpoint → disk (infrequent, includes all heads for resuming)
         if step % save_every == 0:
             extra = {
                 'model_state':     model.state_dict(),
@@ -364,7 +377,9 @@ def main():
                 'q_targ_state':    q_targ.state_dict(),
                 'step':            step,
             }
-            save_policy(model, noise_net, args.buffer_path, step, cfg, extra)
+            ckpt_path = os.path.join('checkpoints', f'train_ckpt_step{step}.pt')
+            torch.save(extra, ckpt_path)
+            print(f"[Learner] Saved full checkpoint → {ckpt_path}")
             writer.add_scalar('train/step_saved', step, step)
 
     print(f"\n[Learner] Training complete at step {step}")

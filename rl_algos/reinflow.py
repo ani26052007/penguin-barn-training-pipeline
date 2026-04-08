@@ -256,6 +256,39 @@ class ReplayBuffer:
         self.ptr  = (self.ptr + 1) % self.capacity
         self.size = min(self.size + 1, self.capacity)
 
+    def sample_recent(self, batch_size, recent_frac=0.5, device='cuda'):
+        """
+        Sample preferentially from recent transitions.
+        recent_frac: fraction of buffer to treat as 'recent' (by insertion order).
+        At least half the batch comes from recent data; rest is uniform.
+        """
+        # Buffer is a circular array. Recent data is near self.ptr.
+        recent_n = max(batch_size, int(self.size * recent_frac))
+        if self.size < self.capacity:
+            # Buffer not yet wrapped: recent data is indices [size-recent_n, size)
+            recent_start = max(0, self.size - recent_n)
+            recent_idx   = np.arange(recent_start, self.size)
+        else:
+            # Wrapped: recent data is the recent_n entries before ptr
+            recent_idx = np.arange(self.ptr - recent_n, self.ptr) % self.capacity
+
+        n_recent  = batch_size // 2
+        n_uniform = batch_size - n_recent
+        idx_recent  = recent_idx[np.random.randint(0, len(recent_idx), size=n_recent)]
+        idx_uniform = np.random.randint(0, self.size, size=n_uniform)
+        idx = np.concatenate([idx_recent, idx_uniform])
+
+        return {
+            'lidar':      self.lidar[idx].to(device),
+            'goal':       self.goal[idx].to(device),
+            'action':     self.action[idx].to(device),
+            'next_lidar': self.next_lidar[idx].to(device),
+            'next_goal':  self.next_goal[idx].to(device),
+            'reward':     self.reward[idx].to(device),
+            'done':       self.done[idx].to(device),
+            'log_prob':   self.log_prob[idx].to(device),
+        }
+    
     def sample(self, batch_size, device='cuda'):
         idx = np.random.randint(0, self.size, size=batch_size)
         return {
