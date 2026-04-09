@@ -4,8 +4,13 @@
 logging
 out
 **.sub
+configs/config.yaml
+local_buffer
+checkpoints
+badmosh
 data
 slurm_logs
 jackal_helper/models
+jackal_helper/worlds
 jackal_helper/worlds
 jackal_helper/plugins

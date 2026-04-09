@@ -1,0 +1,45 @@
+>>>>>>>>>>>>>>>>>> Load world: BARN/world_108.world <<<<<<<<<<<<<<<<<<
+[31mWARNING: disk usage in log directory [/home/gymkhana/.ros/log] is over 1GB.
+It's recommended that you use the 'rosclean' command.[0m
+xacro: in-order processing became default in ROS Melodic. You can drop the option.
+the rosdep view is empty: call 'sudo rosdep init' and 'rosdep update'
+[0m[ INFO] [1775605126.047468813]: Finished loading Gazebo ROS API Plugin.[0m
+[0m[ INFO] [1775605126.050116882]: waitForService: Service [/gazebo/set_physics_properties] has not been advertised, waiting...[0m
+Couldn't find a preferred IP via the getifaddrs() call; I'm assuming that your IP address is 127.0.0.1.  This should work for local processes, but will almost certainly not work if you have remote processes.Report to the disc-zmq development team to seek a fix.
+Couldn't find a preferred IP via the getifaddrs() call; I'm assuming that your IP address is 127.0.0.1.  This should work for local processes, but will almost certainly not work if you have remote processes.Report to the disc-zmq development team to seek a fix.
+Couldn't find a preferred IP via the getifaddrs() call; I'm assuming that your IP address is 127.0.0.1.  This should work for local processes, but will almost certainly not work if you have remote processes.Report to the disc-zmq development team to seek a fix.
+Couldn't find a preferred IP via the getifaddrs() call; I'm assuming that your IP address is 127.0.0.1.  This should work for local processes, but will almost certainly not work if you have remote processes.Report to the disc-zmq development team to seek a fix.
+xcb_connection_has_error() returned true
+Failed to create secure directory (/run/user/1000/pulse): No such file or directory
+ALSA lib pcm_dmix.c:1052:(snd_pcm_dmix_open) unable to open slave
+AL lib: (EE) ALCplaybackAlsa_open: Could not open playback device 'default': No such file or directory
+[31m[ERROR] [1775605128.455909263, 0.006000000]: Updating ModelState: model [jackal] does not exist[0m
+[31m[ERROR] [1775605128.468188904, 0.010000000]: GetModelState: model [jackal] does not exist[0m
+[33m[ WARN] [1775605128.561339530, 0.057000000]: Failed to meet update rate! Took 0.057000000000000002054[0m
+[0m[ INFO] [1775605128.383826456]: waitForService: Service [/gazebo/set_physics_properties] is now available.[0m
+[0m[ INFO] [1775605128.408042651]: Physics dynamic reconfigure ready.[0m
+[1;33mWarning [parser_urdf.cc:1115][0m multiple inconsistent <gravity> exists due to fixed joint reduction overwriting previous value [true] with [false].
+[1;33mWarning [parser_urdf.cc:1115][0m multiple inconsistent <gravity> exists due to fixed joint reduction overwriting previous value [false] with [true].
+[31m[ERROR] [1775605129.447252270, 0.122000000]: No p gain specified for pid.  Namespace: /gazebo_ros_control/pid_gains/front_left_wheel[0m
+[31m[ERROR] [1775605129.448148983, 0.122000000]: No p gain specified for pid.  Namespace: /gazebo_ros_control/pid_gains/front_right_wheel[0m
+[31m[ERROR] [1775605129.448944835, 0.122000000]: No p gain specified for pid.  Namespace: /gazebo_ros_control/pid_gains/rear_left_wheel[0m
+[31m[ERROR] [1775605129.449697156, 0.122000000]: No p gain specified for pid.  Namespace: /gazebo_ros_control/pid_gains/rear_right_wheel[0m
+[33m[ WARN] [1775605176.954420512, 5.008000000]: Failed to meet update rate! Took 0.10800000000000001266[0m
+[33m[ WARN] [1775605176.956040795, 5.008000000]: Failed to meet update rate! Took 0.088000000000000008771[0m
+[33m[ WARN] [1775605355.850278249, 18.948000000]: Failed to meet update rate! Took 0.080000000000000001665[0m
+[33m[ WARN] [1775605355.852410140, 18.948000000]: Failed to meet update rate! Took 0.060000000000000004718[0m
+[33m[ WARN] [1775605714.829421117, 39.347000000]: Failed to meet update rate! Took 0.05900000000000000383[0m
+[33m[ WARN] [1775605880.754866290, 47.523000000]: Failed to meet update rate! Took 0.055000000000000000278[0m
+[33m[ WARN] [1775605936.511593624, 50.410000000]: Failed to meet update rate! Took 0.082000000000000003442[0m
+[33m[ WARN] [1775605936.511961770, 50.410000000]: Failed to meet update rate! Took 0.062000000000000006495[0m
+[33m[ WARN] [1775606016.909328109, 54.379000000]: Failed to meet update rate! Took 0.047000000000000000111[0m
+[33m[ WARN] [1775606117.628827526, 59.253000000]: Failed to meet update rate! Took 0.063000000000000000444[0m
+[33m[ WARN] [1775606117.629921812, 59.253000000]: Failed to meet update rate! Took 0.043000000000000003497[0m
+[33m[ WARN] [1775606295.647244017, 66.913000000]: Failed to meet update rate! Took 0.080000000000000001665[0m
+[33m[ WARN] [1775606295.653630501, 66.914000000]: Failed to meet update rate! Took 0.061000000000000005607[0m
+[33m[ WARN] [1775606655.628681902, 82.241000000]: Failed to meet update rate! Took 0.067000000000000003997[0m
+[33m[ WARN] [1775606655.638835171, 82.241000000]: Failed to meet update rate! Took 0.047000000000000000111[0m
+[33m[ WARN] [1775607329.874500545, 110.765000000]: Failed to meet update rate! Took 0.044000000000000004385[0m
+[33m[ WARN] [1775607373.749571626, 112.568000000]: Failed to meet update rate! Took 0.067000000000000003997[0m
+[33m[ WARN] [1775607373.751110047, 112.569000000]: Failed to meet update rate! Took 0.048000000000000000999[0m
+[33m[ WARN] [1775607508.880593883, 118.866000000]: Failed to meet update rate! Took 0.058000000000000002942[0m

@@ -1,0 +1,234 @@
+>>>>>>>>>>>>>>>>>> Load world: BARN/world_12.world <<<<<<<<<<<<<<<<<<
+[31mWARNING: disk usage in log directory [/home/gymkhana/.ros/log] is over 1GB.
+It's recommended that you use the 'rosclean' command.[0m
+xacro: in-order processing became default in ROS Melodic. You can drop the option.
+the rosdep view is empty: call 'sudo rosdep init' and 'rosdep update'
+[0m[ INFO] [1775605119.915157830]: Finished loading Gazebo ROS API Plugin.[0m
+[0m[ INFO] [1775605119.918560330]: waitForService: Service [/gazebo/set_physics_properties] has not been advertised, waiting...[0m
+Couldn't find a preferred IP via the getifaddrs() call; I'm assuming that your IP address is 127.0.0.1.  This should work for local processes, but will almost certainly not work if you have remote processes.Report to the disc-zmq development team to seek a fix.
+Couldn't find a preferred IP via the getifaddrs() call; I'm assuming that your IP address is 127.0.0.1.  This should work for local processes, but will almost certainly not work if you have remote processes.Report to the disc-zmq development team to seek a fix.
+Couldn't find a preferred IP via the getifaddrs() call; I'm assuming that your IP address is 127.0.0.1.  This should work for local processes, but will almost certainly not work if you have remote processes.Report to the disc-zmq development team to seek a fix.
+Couldn't find a preferred IP via the getifaddrs() call; I'm assuming that your IP address is 127.0.0.1.  This should work for local processes, but will almost certainly not work if you have remote processes.Report to the disc-zmq development team to seek a fix.
+xcb_connection_has_error() returned true
+Failed to create secure directory (/run/user/1000/pulse): No such file or directory
+ALSA lib pcm_dmix.c:1052:(snd_pcm_dmix_open) unable to open slave
+AL lib: (EE) ALCplaybackAlsa_open: Could not open playback device 'default': No such file or directory
+[31m[ERROR] [1775605121.880270545, 0.002000000]: Updating ModelState: model [jackal] does not exist[0m
+[31m[ERROR] [1775605121.892858060, 0.007000000]: GetModelState: model [jackal] does not exist[0m
+[33m[ WARN] [1775605122.053386045, 0.116000000]: Failed to meet update rate! Took 0.11600000000000000588[0m
+[33m[ WARN] [1775605122.054644604, 0.117000000]: Failed to meet update rate! Took 0.097000000000000002887[0m
+[0m[ INFO] [1775605121.820417097]: waitForService: Service [/gazebo/set_physics_properties] is now available.[0m
+[0m[ INFO] [1775605121.882479358, 0.003000000]: Physics dynamic reconfigure ready.[0m
+[1;33mWarning [parser_urdf.cc:1115][0m multiple inconsistent <gravity> exists due to fixed joint reduction overwriting previous value [true] with [false].
+[1;33mWarning [parser_urdf.cc:1115][0m multiple inconsistent <gravity> exists due to fixed joint reduction overwriting previous value [false] with [true].
+[31m[ERROR] [1775605122.796780324, 0.135000000]: No p gain specified for pid.  Namespace: /gazebo_ros_control/pid_gains/front_left_wheel[0m
+[31m[ERROR] [1775605122.797460894, 0.135000000]: No p gain specified for pid.  Namespace: /gazebo_ros_control/pid_gains/front_right_wheel[0m
+[31m[ERROR] [1775605122.798036242, 0.135000000]: No p gain specified for pid.  Namespace: /gazebo_ros_control/pid_gains/rear_left_wheel[0m
+[31m[ERROR] [1775605122.798554120, 0.135000000]: No p gain specified for pid.  Namespace: /gazebo_ros_control/pid_gains/rear_right_wheel[0m
+[33m[ WARN] [1775605176.961473575, 6.256000000]: Failed to meet update rate! Took 0.05900000000000000383[0m
+[33m[ WARN] [1775605261.404561420, 12.388000000]: Failed to meet update rate! Took 0.091000000000000011435[0m
+[33m[ WARN] [1775605261.405060098, 12.388000000]: Failed to meet update rate! Took 0.07100000000000000755[0m
+[33m[ WARN] [1775605579.473030081, 31.378000000]: Failed to meet update rate! Took 0.090000000000000010547[0m
+[33m[ WARN] [1775605579.476757216, 31.378000000]: Failed to meet update rate! Took 0.070000000000000006661[0m
+[Actor 1] Fixed world: 12
+[Actor 1] Policy ready
+[Actor 1] Loading world 12...
+  [Diag Actor 1] ep=0 lidar=[10.00,10.00] goal_dist=13.19m bear=1.742rad
+  [Diag Actor 1] ep=0 log_prob=-5.075  (expected -20 to -5; NaN/±inf → sigma issue)
+[Actor 1] Ep    0 | World  12 |   1 steps | R_raw=  -2.0 | SR=0.00 | TIMEOUT
+  Reward components: progress=+0.00  collision=+0.00  timeout=-2.00  speed=-0.00  obstacle=+0.00  time=-0.01  success=+0.00
+  Normalizer: mean=-2.015 std=0.000 n=1
+[Actor 1] Flushed 1 transitions → /home/gymkhana/Aneesh/penguin-barn-training-pipeline/local_buffer/actor_01_ep00000.pt
+[Actor 1] Ep    1 | World  12 |  13 steps | R_raw=  +6.8 | SR=0.00 | COLLISION
+  Reward components: progress=+10.53  collision=-4.00  timeout=+0.00  speed=+0.74  obstacle=-0.31  time=-0.13  success=+0.00
+  Normalizer: mean=0.345 std=1.467 n=14
+[Actor 1] Flushed 13 transitions → /home/gymkhana/Aneesh/penguin-barn-training-pipeline/local_buffer/actor_01_ep00001.pt
+[Actor 1] Ep    2 | World  12 |  12 steps | R_raw= +11.1 | SR=0.00 | COLLISION
+  Reward components: progress=+14.84  collision=-4.00  timeout=+0.00  speed=+0.73  obstacle=-0.39  time=-0.12  success=+0.00
+  Normalizer: mean=0.611 std=1.560 n=26
+[Actor 1] Flushed 12 transitions → /home/gymkhana/Aneesh/penguin-barn-training-pipeline/local_buffer/actor_01_ep00002.pt
+[Actor 1] Ep    3 | World  12 |  23 steps | R_raw= +11.2 | SR=0.00 | COLLISION
+  Reward components: progress=+15.29  collision=-4.00  timeout=+0.00  speed=+0.74  obstacle=-0.55  time=-0.23  success=+0.00
+  Normalizer: mean=0.554 std=1.307 n=49
+[Actor 1] Flushed 23 transitions → /home/gymkhana/Aneesh/penguin-barn-training-pipeline/local_buffer/actor_01_ep00003.pt
+[Actor 1] Ep    4 | World  12 |  15 steps | R_raw= +10.9 | SR=0.00 | COLLISION
+  Reward components: progress=+14.45  collision=-4.00  timeout=+0.00  speed=+0.85  obstacle=-0.28  time=-0.15  success=+0.00
+  Normalizer: mean=0.594 std=1.254 n=64
+[Actor 1] Flushed 15 transitions → /home/gymkhana/Aneesh/penguin-barn-training-pipeline/local_buffer/actor_01_ep00004.pt
+[Actor 1] Ep    5 | World  12 |  48 steps | R_raw= -11.5 | SR=0.00 | COLLISION
+  Reward components: progress=-8.51  collision=-4.00  timeout=+0.00  speed=+2.13  obstacle=-0.65  time=-0.48  success=+0.00
+  Normalizer: mean=0.237 std=1.187 n=112
+[Actor 1] Flushed 48 transitions → /home/gymkhana/Aneesh/penguin-barn-training-pipeline/local_buffer/actor_01_ep00005.pt
+[Actor 1] Ep    6 | World  12 |  14 steps | R_raw= +10.7 | SR=0.00 | COLLISION
+  Reward components: progress=+14.47  collision=-4.00  timeout=+0.00  speed=+0.76  obstacle=-0.42  time=-0.14  success=+0.00
+  Normalizer: mean=0.295 std=1.212 n=126
+[Actor 1] Flushed 14 transitions → /home/gymkhana/Aneesh/penguin-barn-training-pipeline/local_buffer/actor_01_ep00006.pt
+[Actor 1] Ep    7 | World  12 |  14 steps | R_raw=  +9.9 | SR=0.00 | COLLISION
+  Reward components: progress=+13.66  collision=-4.00  timeout=+0.00  speed=+0.78  obstacle=-0.38  time=-0.14  success=+0.00
+  Normalizer: mean=0.337 std=1.226 n=140
+[Actor 1] Flushed 14 transitions → /home/gymkhana/Aneesh/penguin-barn-training-pipeline/local_buffer/actor_01_ep00007.pt
+[Actor 1] Ep    8 | World  12 |  34 steps | R_raw= +24.4 | SR=0.00 | COLLISION
+  Reward components: progress=+27.86  collision=-4.00  timeout=+0.00  speed=+1.73  obstacle=-0.86  time=-0.34  success=+0.00
+  Normalizer: mean=0.411 std=1.176 n=174
+[Actor 1] Flushed 34 transitions → /home/gymkhana/Aneesh/penguin-barn-training-pipeline/local_buffer/actor_01_ep00008.pt
+[Actor 1] Ep    9 | World  12 |  32 steps | R_raw= +23.4 | SR=0.00 | COLLISION
+  Reward components: progress=+27.43  collision=-4.00  timeout=+0.00  speed=+1.72  obstacle=-1.37  time=-0.32  success=+0.00
+  Normalizer: mean=0.461 std=1.153 n=206
+[Actor 1] Flushed 32 transitions → /home/gymkhana/Aneesh/penguin-barn-training-pipeline/local_buffer/actor_01_ep00009.pt
+  [Diag Actor 1] ep=10 lidar=[2.04,10.00] goal_dist=9.99m bear=-0.007rad
+  [Diag Actor 1] ep=10 log_prob=-2.549  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=10 lidar=[1.95,10.00] goal_dist=9.90m bear=0.074rad
+  [Diag Actor 1] ep=10 log_prob=-5.512  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=10 lidar=[1.79,10.00] goal_dist=9.75m bear=-0.034rad
+  [Diag Actor 1] ep=10 log_prob=-4.291  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=10 lidar=[1.60,10.00] goal_dist=9.53m bear=-0.097rad
+  [Diag Actor 1] ep=10 log_prob=-5.934  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=10 lidar=[1.39,10.00] goal_dist=9.30m bear=-0.150rad
+  [Diag Actor 1] ep=10 log_prob=-5.126  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=10 lidar=[1.24,10.00] goal_dist=9.13m bear=-0.199rad
+  [Diag Actor 1] ep=10 log_prob=-3.551  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=10 lidar=[1.15,10.00] goal_dist=9.02m bear=-0.169rad
+  [Diag Actor 1] ep=10 log_prob=-3.102  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=10 lidar=[1.02,10.00] goal_dist=8.83m bear=-0.183rad
+  [Diag Actor 1] ep=10 log_prob=-4.826  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=10 lidar=[0.89,10.00] goal_dist=8.65m bear=-0.180rad
+  [Diag Actor 1] ep=10 log_prob=-6.164  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=10 lidar=[0.78,10.00] goal_dist=8.46m bear=-0.196rad
+  [Diag Actor 1] ep=10 log_prob=-9.876  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=10 lidar=[0.71,10.00] goal_dist=8.25m bear=-0.209rad
+  [Diag Actor 1] ep=10 log_prob=-3.111  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=10 lidar=[0.70,10.00] goal_dist=8.03m bear=-0.334rad
+  [Diag Actor 1] ep=10 log_prob=-0.725  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=10 lidar=[0.70,10.00] goal_dist=7.89m bear=-0.267rad
+  [Diag Actor 1] ep=10 log_prob=-3.883  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=10 lidar=[0.70,10.00] goal_dist=7.75m bear=-0.267rad
+  [Diag Actor 1] ep=10 log_prob=0.373  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=10 lidar=[0.63,10.00] goal_dist=7.58m bear=-0.266rad
+  [Diag Actor 1] ep=10 log_prob=-4.082  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=10 lidar=[0.51,10.00] goal_dist=7.47m bear=-0.325rad
+  [Diag Actor 1] ep=10 log_prob=-6.629  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=10 lidar=[0.35,10.00] goal_dist=7.31m bear=-0.400rad
+  [Diag Actor 1] ep=10 log_prob=-3.492  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=10 lidar=[0.17,10.00] goal_dist=7.14m bear=-0.343rad
+  [Diag Actor 1] ep=10 log_prob=-7.804  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=10 lidar=[0.12,10.00] goal_dist=7.10m bear=-0.317rad
+  [Diag Actor 1] ep=10 log_prob=-2.360  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=10 lidar=[0.10,10.00] goal_dist=7.08m bear=-0.280rad
+  [Diag Actor 1] ep=10 log_prob=-4.310  (expected -20 to -5; NaN/±inf → sigma issue)
+[Actor 1] Ep   10 | World  12 |  20 steps | R_raw= +10.3 | SR=0.00 | COLLISION
+  Reward components: progress=+14.56  collision=-4.00  timeout=+0.00  speed=+0.77  obstacle=-0.82  time=-0.20  success=+0.00
+  Normalizer: mean=0.466 std=1.152 n=226
+[Actor 1] Flushed 20 transitions → /home/gymkhana/Aneesh/penguin-barn-training-pipeline/local_buffer/actor_01_ep00010.pt
+[Actor 1] Ep   11 | World  12 |  12 steps | R_raw= +10.7 | SR=0.00 | COLLISION
+  Reward components: progress=+14.26  collision=-4.00  timeout=+0.00  speed=+0.79  obstacle=-0.21  time=-0.12  success=+0.00
+  Normalizer: mean=0.487 std=1.159 n=238
+[Actor 1] Flushed 12 transitions → /home/gymkhana/Aneesh/penguin-barn-training-pipeline/local_buffer/actor_01_ep00011.pt
+[Actor 1] Ep   12 | World  12 |  15 steps | R_raw= +10.7 | SR=0.00 | COLLISION
+  Reward components: progress=+14.46  collision=-4.00  timeout=+0.00  speed=+0.83  obstacle=-0.40  time=-0.15  success=+0.00
+  Normalizer: mean=0.501 std=1.168 n=253
+[Actor 1] Flushed 15 transitions → /home/gymkhana/Aneesh/penguin-barn-training-pipeline/local_buffer/actor_01_ep00012.pt[33m[ WARN] [1775606018.891508515, 52.059000000]: Failed to meet update rate! Took 0.041000000000000001721[0m
+[33m[ WARN] [1775606117.633610497, 56.699000000]: Failed to meet update rate! Took 0.061000000000000005607[0m
+[33m[ WARN] [1775606117.636213325, 56.700000000]: Failed to meet update rate! Took 0.042000000000000002609[0m
+[33m[ WARN] [1775606295.776204419, 64.586000000]: Failed to meet update rate! Took 0.10700000000000001177[0m
+[33m[ WARN] [1775606295.776673846, 64.586000000]: Failed to meet update rate! Took 0.087000000000000007883[0m
+[33m[ WARN] [1775606611.840572472, 79.589000000]: Failed to meet update rate! Took 0.043000000000000003497[0m
+[33m[ WARN] [1775606655.618949489, 81.451000000]: Failed to meet update rate! Took 0.06500000000000000222[0m
+[33m[ WARN] [1775606655.619414546, 81.451000000]: Failed to meet update rate! Took 0.045000000000000005274[0m
+[33m[ WARN] [1775606835.429195963, 88.927000000]: Failed to meet update rate! Took 0.11600000000000000588[0m
+[33m[ WARN] [1775606835.432402170, 88.928000000]: Failed to meet update rate! Took 0.097000000000000002887[0m
+
+[Actor 1] Ep   13 | World  12 | 100 steps | R_raw=  -7.6 | SR=0.00 | TIMEOUT
+  Reward components: progress=-8.63  collision=+0.00  timeout=-2.00  speed=+4.56  obstacle=-0.49  time=-1.00  success=+0.00
+  Normalizer: mean=0.338 std=1.150 n=353
+[Actor 1] Flushed 100 transitions → /home/gymkhana/Aneesh/penguin-barn-training-pipeline/local_buffer/actor_01_ep00013.pt
+[Actor 1] Ep   14 | World  12 |  34 steps | R_raw= +26.0 | SR=0.00 | COLLISION
+  Reward components: progress=+29.78  collision=-4.00  timeout=+0.00  speed=+1.74  obstacle=-1.20  time=-0.34  success=+0.00
+  Normalizer: mean=0.375 std=1.138 n=387
+[Actor 1] Flushed 34 transitions → /home/gymkhana/Aneesh/penguin-barn-training-pipeline/local_buffer/actor_01_ep00014.pt
+[Actor 1] Ep   15 | World  12 | 100 steps | R_raw= +17.5 | SR=0.00 | TIMEOUT
+  Reward components: progress=+17.88  collision=+0.00  timeout=-2.00  speed=+4.13  obstacle=-1.53  time=-1.00  success=+0.00
+  Normalizer: mean=0.334 std=1.083 n=487
+[Actor 1] Flushed 100 transitions → /home/gymkhana/Aneesh/penguin-barn-training-pipeline/local_buffer/actor_01_ep00015.pt
+[Actor 1] Ep   16 | World  12 |  15 steps | R_raw=  +9.4 | SR=0.00 | COLLISION
+  Reward components: progress=+13.24  collision=-4.00  timeout=+0.00  speed=+0.84  obstacle=-0.50  time=-0.15  success=+0.00
+  Normalizer: mean=0.343 std=1.092 n=502
+[Actor 1] Flushed 15 transitions → /home/gymkhana/Aneesh/penguin-barn-training-pipeline/local_buffer/actor_01_ep00016.pt
+[Actor 1] Ep   17 | World  12 |  15 steps | R_raw= +10.4 | SR=0.00 | COLLISION
+  Reward components: progress=+14.31  collision=-4.00  timeout=+0.00  speed=+0.74  obstacle=-0.54  time=-0.15  success=+0.00
+  Normalizer: mean=0.353 std=1.103 n=517
+[Actor 1] Flushed 15 transitions → /home/gymkhana/Aneesh/penguin-barn-training-pipeline/local_buffer/actor_01_ep00017.pt
+[Actor 1] Ep   18 | World  12 |  20 steps | R_raw=  +8.7 | SR=0.00 | COLLISION
+  Reward components: progress=+12.84  collision=-4.00  timeout=+0.00  speed=+0.81  obstacle=-0.71  time=-0.20  success=+0.00
+  Normalizer: mean=0.356 std=1.103 n=537
+[Actor 1] Flushed 20 transitions → /home/gymkhana/Aneesh/penguin-barn-training-pipeline/local_buffer/actor_01_ep00018.pt
+[Actor 1] Ep   19 | World  12 |  13 steps | R_raw=  +5.4 | SR=0.00 | COLLISION
+  Reward components: progress=+9.44  collision=-4.00  timeout=+0.00  speed=+0.54  obstacle=-0.49  time=-0.13  success=+0.00
+  Normalizer: mean=0.357 std=1.110 n=550
+  ⚠ [Actor 1] Low success rate (0.00) over last 20 eps — check reward scale and lr_actor.
+[Actor 1] Flushed 13 transitions → /home/gymkhana/Aneesh/penguin-barn-training-pipeline/local_buffer/actor_01_ep00019.pt
+  [Diag Actor 1] ep=20 lidar=[2.03,10.00] goal_dist=9.99m bear=0.088rad
+  [Diag Actor 1] ep=20 log_prob=-4.897  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=20 lidar=[1.93,10.00] goal_dist=9.88m bear=0.071rad
+  [Diag Actor 1] ep=20 log_prob=-4.243  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=20 lidar=[1.83,10.00] goal_dist=9.78m bear=0.046rad
+  [Diag Actor 1] ep=20 log_prob=-2.806  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=20 lidar=[1.70,10.00] goal_dist=9.65m bear=0.046rad
+  [Diag Actor 1] ep=20 log_prob=-1.080  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=20 lidar=[1.45,10.00] goal_dist=9.37m bear=0.047rad
+  [Diag Actor 1] ep=20 log_prob=-5.929  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=20 lidar=[1.17,10.00] goal_dist=9.09m bear=0.027rad
+  [Diag Actor 1] ep=20 log_prob=-9.955  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=20 lidar=[0.96,10.00] goal_dist=8.85m bear=-0.111rad
+  [Diag Actor 1] ep=20 log_prob=-4.595  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=20 lidar=[0.76,10.00] goal_dist=8.57m bear=-0.255rad
+  [Diag Actor 1] ep=20 log_prob=-12.137  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=20 lidar=[0.63,10.00] goal_dist=8.31m bear=-0.143rad
+  [Diag Actor 1] ep=20 log_prob=1.070  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=20 lidar=[0.56,10.00] goal_dist=8.10m bear=-0.020rad
+  [Diag Actor 1] ep=20 log_prob=-5.590  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=20 lidar=[0.54,10.00] goal_dist=7.84m bear=-0.009rad
+  [Diag Actor 1] ep=20 log_prob=-6.052  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=20 lidar=[0.54,10.00] goal_dist=7.51m bear=-0.067rad
+  [Diag Actor 1] ep=20 log_prob=-2.921  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=20 lidar=[0.44,10.00] goal_dist=7.22m bear=-0.129rad
+  [Diag Actor 1] ep=20 log_prob=-3.079  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=20 lidar=[0.34,10.00] goal_dist=7.06m bear=-0.120rad
+  [Diag Actor 1] ep=20 log_prob=-5.132  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=20 lidar=[0.29,10.00] goal_dist=6.88m bear=-0.125rad
+  [Diag Actor 1] ep=20 log_prob=-1.384  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=20 lidar=[0.29,10.00] goal_dist=6.75m bear=-0.146rad
+  [Diag Actor 1] ep=20 log_prob=-6.609  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=20 lidar=[0.29,10.00] goal_dist=6.62m bear=-0.067rad
+  [Diag Actor 1] ep=20 log_prob=-1.881  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=20 lidar=[0.29,10.00] goal_dist=6.47m bear=0.125rad
+  [Diag Actor 1] ep=20 log_prob=-4.450  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=20 lidar=[0.30,10.00] goal_dist=6.27m bear=0.222rad
+  [Diag Actor 1] ep=20 log_prob=-2.273  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=20 lidar=[0.36,10.00] goal_dist=6.03m bear=0.259rad
+  [Diag Actor 1] ep=20 log_prob=-10.066  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=20 lidar=[0.49,10.00] goal_dist=5.80m bear=0.238rad
+  [Diag Actor 1] ep=20 log_prob=-8.962  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=20 lidar=[0.29,10.00] goal_dist=5.55m bear=0.251rad
+  [Diag Actor 1] ep=20 log_prob=-10.510  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 1] ep=20 lidar=[0.10,10.00] goal_dist=5.37m bear=0.352rad
+  [Diag Actor 1] ep=20 log_prob=-4.556  (expected -20 to -5; NaN/±inf → sigma issue)
+[Actor 1] Ep   20 | World  12 |  23 steps | R_raw= +19.3 | SR=0.00 | COLLISION
+  Reward components: progress=+23.13  collision=-4.00  timeout=+0.00  speed=+1.27  obstacle=-0.86  time=-0.23  success=+0.00
+  Normalizer: mean=0.377 std=1.115 n=573
+  ⚠ [Actor 1] Low success rate (0.00) over last 20 eps — check reward scale and lr_actor.
+[Actor 1] Flushed 23 transitions → /home/gymkhana/Aneesh/penguin-barn-training-pipeline/local_buffer/actor_01_ep00020.pt
+[Actor 1] Ep   21 | World  12 |  10 steps | R_raw=  +5.3 | SR=0.00 | COLLISION
+  Reward components: progress=+9.07  collision=-4.00  timeout=+0.00  speed=+0.57  obstacle=-0.23  time=-0.10  success=+0.00
+  Normalizer: mean=0.379 std=1.118 n=583
+  ⚠ [Actor 1] Low success rate (0.00) over last 20 eps — check reward scale and lr_actor.
+[Actor 1] Flushed 10 transitions → /home/gymkhana/Aneesh/penguin-barn-training-pipeline/local_buffer/actor_01_ep00021.pt
+[Actor 1] Ep   22 | World  12 |   9 steps | R_raw=  +5.5 | SR=0.00 | COLLISION
+  Reward components: progress=+9.50  collision=-4.00  timeout=+0.00  speed=+0.53  obstacle=-0.46  time=-0.09  success=+0.00
+  Normalizer: mean=0.383 std=1.129 n=592
+  ⚠ [Actor 1] Low success rate (0.00) over last 20 eps — check reward scale and lr_actor.
+[Actor 1] Flushed 9 transitions → /home/gymkhana/Aneesh/penguin-barn-training-pipeline/local_buffer/actor_01_ep00022.pt
+[Actor 1] Ep   23 | World  12 |  15 steps | R_raw=  +4.4 | SR=0.00 | COLLISION
+  Reward components: progress=+8.44  collision=-4.00  timeout=+0.00  speed=+0.82  obstacle=-0.76  time=-0.15  success=+0.00
+  Normalizer: mean=0.381 std=1.134 n=607
+  ⚠ [Actor 1] Low success rate (0.00) over last 20 eps — check reward scale and lr_actor.
+[Actor 1] Flushed 15 transitions → /home/gymkhana/Aneesh/penguin-barn-training-pipeline/local_buffer/actor_01_ep00023.pt

@@ -1,0 +1,230 @@
+>>>>>>>>>>>>>>>>>> Load world: BARN/world_249.world <<<<<<<<<<<<<<<<<<
+[31mWARNING: disk usage in log directory [/home/gymkhana/.ros/log] is over 1GB.
+It's recommended that you use the 'rosclean' command.[0m
+xacro: in-order processing became default in ROS Melodic. You can drop the option.
+the rosdep view is empty: call 'sudo rosdep init' and 'rosdep update'
+[0m[ INFO] [1775605162.134074133]: Finished loading Gazebo ROS API Plugin.[0m
+[0m[ INFO] [1775605162.137941570]: waitForService: Service [/gazebo/set_physics_properties] has not been advertised, waiting...[0m
+Couldn't find a preferred IP via the getifaddrs() call; I'm assuming that your IP address is 127.0.0.1.  This should work for local processes, but will almost certainly not work if you have remote processes.Report to the disc-zmq development team to seek a fix.
+Couldn't find a preferred IP via the getifaddrs() call; I'm assuming that your IP address is 127.0.0.1.  This should work for local processes, but will almost certainly not work if you have remote processes.Report to the disc-zmq development team to seek a fix.
+Couldn't find a preferred IP via the getifaddrs() call; I'm assuming that your IP address is 127.0.0.1.  This should work for local processes, but will almost certainly not work if you have remote processes.Report to the disc-zmq development team to seek a fix.
+Couldn't find a preferred IP via the getifaddrs() call; I'm assuming that your IP address is 127.0.0.1.  This should work for local processes, but will almost certainly not work if you have remote processes.Report to the disc-zmq development team to seek a fix.
+xcb_connection_has_error() returned true
+Failed to create secure directory (/run/user/1000/pulse): No such file or directory
+ALSA lib pcm_dmix.c:1052:(snd_pcm_dmix_open) unable to open slave
+AL lib: (EE) ALCplaybackAlsa_open: Could not open playback device 'default': No such file or directory
+[0m[ INFO] [1775605167.404105634]: waitForService: Service [/gazebo/set_physics_properties] is now available.[0m
+[1;33mWarning [parser_urdf.cc:1115][0m multiple inconsistent <gravity> exists due to fixed joint reduction overwriting previous value [true] with [false].
+[1;33mWarning [parser_urdf.cc:1115][0m multiple inconsistent <gravity> exists due to fixed joint reduction overwriting previous value [false] with [true].
+[31m[ERROR] [1775605168.839860642, 0.001000000]: No p gain specified for pid.  Namespace: /gazebo_ros_control/pid_gains/front_left_wheel[0m
+[31m[ERROR] [1775605168.841019129, 0.001000000]: No p gain specified for pid.  Namespace: /gazebo_ros_control/pid_gains/front_right_wheel[0m
+[31m[ERROR] [1775605168.842248627, 0.001000000]: No p gain specified for pid.  Namespace: /gazebo_ros_control/pid_gains/rear_left_wheel[0m
+[31m[ERROR] [1775605168.843094349, 0.001000000]: No p gain specified for pid.  Namespace: /gazebo_ros_control/pid_gains/rear_right_wheel[0m
+[33m[ WARN] [1775605176.963439984, 0.417000000]: Failed to meet update rate! Took 0.057000000000000002054[0m
+[Actor 22] Fixed world: 249
+[Actor 22] Policy ready
+[Actor 22] Loading world 249...
+  [Diag Actor 22] ep=0 lidar=[2.09,10.00] goal_dist=10.00m bear=0.000rad
+  [Diag Actor 22] ep=0 log_prob=-1.551  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[2.09,10.00] goal_dist=10.00m bear=0.000rad
+  [Diag Actor 22] ep=0 log_prob=-2.804  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[2.09,10.00] goal_dist=10.00m bear=0.000rad
+  [Diag Actor 22] ep=0 log_prob=-8.034  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[2.09,10.00] goal_dist=10.00m bear=0.000rad
+  [Diag Actor 22] ep=0 log_prob=-6.734  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[2.09,10.00] goal_dist=10.00m bear=0.000rad
+  [Diag Actor 22] ep=0 log_prob=-1.072  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[2.09,10.00] goal_dist=10.00m bear=0.000rad
+  [Diag Actor 22] ep=0 log_prob=-7.719  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[2.09,10.00] goal_dist=10.00m bear=0.000rad
+  [Diag Actor 22] ep=0 log_prob=-1.994  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[2.09,10.00] goal_dist=10.00m bear=0.000rad
+  [Diag Actor 22] ep=0 log_prob=-11.891  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[2.08,10.00] goal_dist=9.99m bear=0.000rad
+  [Diag Actor 22] ep=0 log_prob=-1.822  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[2.06,10.00] goal_dist=9.96m bear=0.000rad
+  [Diag Actor 22] ep=0 log_prob=-6.363  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[2.02,10.00] goal_dist=9.92m bear=0.003rad
+  [Diag Actor 22] ep=0 log_prob=-3.824  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[1.95,10.00] goal_dist=9.85m bear=0.003rad
+  [Diag Actor 22] ep=0 log_prob=-0.901  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[1.90,10.00] goal_dist=9.80m bear=0.006rad
+  [Diag Actor 22] ep=0 log_prob=-5.974  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[1.86,10.00] goal_dist=9.76m bear=0.006rad
+  [Diag Actor 22] ep=0 log_prob=-5.282  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[1.83,10.00] goal_dist=9.73m bear=-0.005rad
+  [Diag Actor 22] ep=0 log_prob=-5.002  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[1.80,10.00] goal_dist=9.69m bear=-0.011rad
+  [Diag Actor 22] ep=0 log_prob=-5.883  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[1.75,10.00] goal_dist=9.64m bear=-0.011rad
+  [Diag Actor 22] ep=0 log_prob=-2.895  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[1.70,10.00] goal_dist=9.59m bear=-0.006rad
+  [Diag Actor 22] ep=0 log_prob=-8.218  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[1.64,10.00] goal_dist=9.52m bear=-0.003rad
+  [Diag Actor 22] ep=0 log_prob=-0.932  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[1.58,10.00] goal_dist=9.45m bear=0.002rad
+  [Diag Actor 22] ep=0 log_prob=-5.252  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[1.52,10.00] goal_dist=9.38m bear=0.023rad
+  [Diag Actor 22] ep=0 log_prob=-5.562  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[1.45,10.00] goal_dist=9.31m bear=0.030rad
+  [Diag Actor 22] ep=0 log_prob=-2.999  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[1.39,10.00] goal_dist=9.24m bear=0.030rad
+  [Diag Actor 22] ep=0 log_prob=-10.725  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[1.34,10.00] goal_dist=9.19m bear=0.030rad
+  [Diag Actor 22] ep=0 log_prob=-2.999  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[1.30,10.00] goal_dist=9.15m bear=0.027rad
+  [Diag Actor 22] ep=0 log_prob=-6.012  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[1.26,10.00] goal_dist=9.10m bear=0.024rad
+  [Diag Actor 22] ep=0 log_prob=-7.600  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[1.22,10.00] goal_dist=9.05m bear=0.026rad
+  [Diag Actor 22] ep=0 log_prob=-4.193  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[1.16,10.00] goal_dist=8.98m bear=0.047rad
+  [Diag Actor 22] ep=0 log_prob=-11.354  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[1.12,10.00] goal_dist=8.93m bear=0.059rad
+  [Diag Actor 22] ep=0 log_prob=-0.852  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[1.08,10.00] goal_dist=8.89m bear=0.058rad
+  [Diag Actor 22] ep=0 log_prob=-7.314  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[1.03,10.00] goal_dist=8.83m bear=0.051rad
+  [Diag Actor 22] ep=0 log_prob=-8.600  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[0.99,10.00] goal_dist=8.78m bear=0.043rad
+  [Diag Actor 22] ep=0 log_prob=-2.230  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[0.95,10.00] goal_dist=8.73m bear=0.040rad
+  [Diag Actor 22] ep=0 log_prob=-1.917  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[0.90,10.00] goal_dist=8.66m bear=0.037rad
+  [Diag Actor 22] ep=0 log_prob=-3.476  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[0.85,10.00] goal_dist=8.60m bear=0.035rad
+  [Diag Actor 22] ep=0 log_prob=-3.420  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[0.81,10.00] goal_dist=8.54m bear=0.043rad
+  [Diag Actor 22] ep=0 log_prob=-4.833  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[0.77,10.00] goal_dist=8.49m bear=0.068rad
+  [Diag Actor 22] ep=0 log_prob=-4.225  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[0.75,10.00] goal_dist=8.46m bear=0.088rad
+  [Diag Actor 22] ep=0 log_prob=-6.312  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[0.73,10.00] goal_dist=8.43m bear=0.094rad
+  [Diag Actor 22] ep=0 log_prob=-5.542  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[0.70,10.00] goal_dist=8.39m bear=0.087rad
+  [Diag Actor 22] ep=0 log_prob=-7.531  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[0.67,10.00] goal_dist=8.33m bear=0.088rad
+  [Diag Actor 22] ep=0 log_prob=-5.047  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[0.63,10.00] goal_dist=8.26m bear=0.094rad
+  [Diag Actor 22] ep=0 log_prob=-9.734  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[0.60,10.00] goal_dist=8.21m bear=0.116rad
+  [Diag Actor 22] ep=0 log_prob=-0.801  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[0.59,10.00] goal_dist=8.18m bear=0.126rad
+  [Diag Actor 22] ep=0 log_prob=-7.479  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[0.57,10.00] goal_dist=8.14m bear=0.144rad
+  [Diag Actor 22] ep=0 log_prob=-6.370  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[0.55,10.00] goal_dist=8.10m bear=0.148rad
+  [Diag Actor 22] ep=0 log_prob=0.832  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[0.53,10.00] goal_dist=8.04m bear=0.151rad
+  [Diag Actor 22] ep=0 log_prob=-3.672  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[0.51,10.00] goal_dist=7.98m bear=0.153rad
+  [Diag Actor 22] ep=0 log_prob=1.554  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[0.50,10.00] goal_dist=7.92m bear=0.161rad
+  [Diag Actor 22] ep=0 log_prob=-2.443  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[0.50,10.00] goal_dist=7.87m bear=0.172rad
+  [Diag Actor 22] ep=0 log_prob=-3.296  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[0.50,10.00] goal_dist=7.80m bear=0.187rad
+  [Diag Actor 22] ep=0 log_prob=-4.081  (expected -20 to -5; NaN/±inf → sigma issue)[33m[ WARN] [1775605399.449271172, 7.969000000]: Failed to meet update rate! Took 0.068000000000000004885[0m
+[33m[ WARN] [1775605399.450644212, 7.969000000]: Failed to meet update rate! Took 0.049000000000000001887[0m
+[33m[ WARN] [1775605714.821467140, 15.799000000]: Failed to meet update rate! Took 0.050000000000000002776[0m
+[33m[ WARN] [1775605880.726213150, 19.303000000]: Failed to meet update rate! Took 0.054000000000000006328[0m
+[33m[ WARN] [1775606295.645550622, 27.188000000]: Failed to meet update rate! Took 0.05900000000000000383[0m
+[33m[ WARN] [1775606835.429982585, 37.567000000]: Failed to meet update rate! Took 0.058000000000000002942[0m
+
+  [Diag Actor 22] ep=0 lidar=[0.46,10.00] goal_dist=7.72m bear=0.211rad
+  [Diag Actor 22] ep=0 log_prob=-4.874  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[0.41,10.00] goal_dist=7.67m bear=0.218rad
+  [Diag Actor 22] ep=0 log_prob=-7.264  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[0.37,10.00] goal_dist=7.63m bear=0.230rad
+  [Diag Actor 22] ep=0 log_prob=-7.006  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[0.32,10.00] goal_dist=7.57m bear=0.231rad
+  [Diag Actor 22] ep=0 log_prob=-3.247  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[0.27,10.00] goal_dist=7.53m bear=0.232rad
+  [Diag Actor 22] ep=0 log_prob=-4.593  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[0.23,10.00] goal_dist=7.48m bear=0.248rad
+  [Diag Actor 22] ep=0 log_prob=-6.629  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[0.20,10.00] goal_dist=7.44m bear=0.291rad
+  [Diag Actor 22] ep=0 log_prob=-3.020  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=0 lidar=[0.18,10.00] goal_dist=7.42m bear=0.293rad
+  [Diag Actor 22] ep=0 log_prob=-9.526  (expected -20 to -5; NaN/±inf → sigma issue)
+[Actor 22] Ep    0 | World 249 |  59 steps | R_raw=  +9.6 | SR=0.00 | COLLISION
+  Reward components: progress=+12.93  collision=-4.00  timeout=+0.00  speed=+2.11  obstacle=-0.88  time=-0.59  success=+0.00
+  Normalizer: mean=0.162 std=0.584 n=59
+[Actor 22] Flushed 59 transitions → /home/gymkhana/Aneesh/penguin-barn-training-pipeline/local_buffer/actor_22_ep00000.pt
+[Actor 22] Ep    1 | World 249 |  60 steps | R_raw=  +9.8 | SR=0.00 | COLLISION
+  Reward components: progress=+12.85  collision=-4.00  timeout=+0.00  speed=+2.31  obstacle=-0.76  time=-0.60  success=+0.00
+  Normalizer: mean=0.163 std=0.575 n=119
+[Actor 22] Flushed 60 transitions → /home/gymkhana/Aneesh/penguin-barn-training-pipeline/local_buffer/actor_22_ep00001.pt
+[Actor 22] Ep    2 | World 249 |  57 steps | R_raw=  +8.6 | SR=0.00 | COLLISION
+  Reward components: progress=+12.75  collision=-4.00  timeout=+0.00  speed=+2.04  obstacle=-1.66  time=-0.57  success=+0.00
+  Normalizer: mean=0.159 std=0.582 n=176
+[Actor 22] Flushed 57 transitions → /home/gymkhana/Aneesh/penguin-barn-training-pipeline/local_buffer/actor_22_ep00002.pt
+[Actor 22] Ep    3 | World 249 |  66 steps | R_raw=  +9.7 | SR=0.00 | COLLISION
+  Reward components: progress=+13.41  collision=-4.00  timeout=+0.00  speed=+2.20  obstacle=-1.22  time=-0.66  success=+0.00
+  Normalizer: mean=0.156 std=0.573 n=242
+[Actor 22] Flushed 66 transitions → /home/gymkhana/Aneesh/penguin-barn-training-pipeline/local_buffer/actor_22_ep00003.pt
+[Actor 22] Ep    4 | World 249 |  74 steps | R_raw=  +9.8 | SR=0.00 | COLLISION
+  Reward components: progress=+13.04  collision=-4.00  timeout=+0.00  speed=+2.28  obstacle=-0.75  time=-0.74  success=+0.00
+  Normalizer: mean=0.150 std=0.556 n=316
+[Actor 22] Flushed 74 transitions → /home/gymkhana/Aneesh/penguin-barn-training-pipeline/local_buffer/actor_22_ep00004.pt
+[Actor 22] Ep    5 | World 249 |  58 steps | R_raw= +10.1 | SR=0.00 | COLLISION
+  Reward components: progress=+13.18  collision=-4.00  timeout=+0.00  speed=+2.29  obstacle=-0.81  time=-0.58  success=+0.00
+  Normalizer: mean=0.154 std=0.561 n=374
+[Actor 22] Flushed 58 transitions → /home/gymkhana/Aneesh/penguin-barn-training-pipeline/local_buffer/actor_22_ep00005.pt
+[Actor 22] Ep    6 | World 249 |  67 steps | R_raw=  +9.3 | SR=0.00 | COLLISION
+  Reward components: progress=+12.86  collision=-4.00  timeout=+0.00  speed=+2.30  obstacle=-1.21  time=-0.67  success=+0.00
+  Normalizer: mean=0.152 std=0.556 n=441
+[Actor 22] Flushed 67 transitions → /home/gymkhana/Aneesh/penguin-barn-training-pipeline/local_buffer/actor_22_ep00006.pt
+[Actor 22] Ep    7 | World 249 |  47 steps | R_raw=  +6.1 | SR=0.00 | COLLISION
+  Reward components: progress=+9.87  collision=-4.00  timeout=+0.00  speed=+1.73  obstacle=-1.03  time=-0.47  success=+0.00
+  Normalizer: mean=0.150 std=0.563 n=488
+[Actor 22] Flushed 47 transitions → /home/gymkhana/Aneesh/penguin-barn-training-pipeline/local_buffer/actor_22_ep00007.pt
+[Actor 22] Ep    8 | World 249 |  44 steps | R_raw=  +9.8 | SR=0.00 | COLLISION
+  Reward components: progress=+13.15  collision=-4.00  timeout=+0.00  speed=+2.17  obstacle=-1.13  time=-0.44  success=+0.00
+  Normalizer: mean=0.155 std=0.576 n=532
+[Actor 22] Flushed 44 transitions → /home/gymkhana/Aneesh/penguin-barn-training-pipeline/local_buffer/actor_22_ep00008.pt
+[Actor 22] Ep    9 | World 249 | 100 steps | R_raw= +12.1 | SR=0.00 | TIMEOUT
+  Reward components: progress=+16.23  collision=+0.00  timeout=-2.00  speed=+3.19  obstacle=-4.30  time=-1.00  success=+0.00
+  Normalizer: mean=0.150 std=0.538 n=632
+[Actor 22] Flushed 100 transitions → /home/gymkhana/Aneesh/penguin-barn-training-pipeline/local_buffer/actor_22_ep00009.pt
+  [Diag Actor 22] ep=10 lidar=[2.09,10.00] goal_dist=10.00m bear=-0.037rad
+  [Diag Actor 22] ep=10 log_prob=-4.052  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=10 lidar=[2.08,10.00] goal_dist=9.99m bear=-0.012rad
+  [Diag Actor 22] ep=10 log_prob=-4.877  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=10 lidar=[2.05,10.00] goal_dist=9.96m bear=0.003rad
+  [Diag Actor 22] ep=10 log_prob=-2.909  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=10 lidar=[2.02,10.00] goal_dist=9.93m bear=-0.000rad
+  [Diag Actor 22] ep=10 log_prob=-3.128  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=10 lidar=[1.99,10.00] goal_dist=9.89m bear=-0.011rad
+  [Diag Actor 22] ep=10 log_prob=-12.404  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=10 lidar=[1.94,10.00] goal_dist=9.85m bear=-0.020rad
+  [Diag Actor 22] ep=10 log_prob=-2.157  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=10 lidar=[1.89,10.00] goal_dist=9.79m bear=-0.021rad
+  [Diag Actor 22] ep=10 log_prob=-4.381  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=10 lidar=[1.83,10.00] goal_dist=9.72m bear=-0.020rad
+  [Diag Actor 22] ep=10 log_prob=-3.161  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=10 lidar=[1.76,10.00] goal_dist=9.64m bear=-0.022rad
+  [Diag Actor 22] ep=10 log_prob=-4.740  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=10 lidar=[1.67,10.00] goal_dist=9.54m bear=-0.022rad
+  [Diag Actor 22] ep=10 log_prob=-8.831  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=10 lidar=[1.58,10.00] goal_dist=9.44m bear=-0.022rad
+  [Diag Actor 22] ep=10 log_prob=-6.772  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=10 lidar=[1.48,10.00] goal_dist=9.33m bear=-0.014rad
+  [Diag Actor 22] ep=10 log_prob=-4.233  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=10 lidar=[1.39,10.00] goal_dist=9.23m bear=-0.014rad
+  [Diag Actor 22] ep=10 log_prob=-5.434  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=10 lidar=[1.30,10.00] goal_dist=9.13m bear=-0.025rad
+  [Diag Actor 22] ep=10 log_prob=-2.976  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=10 lidar=[1.24,10.00] goal_dist=9.06m bear=-0.022rad
+  [Diag Actor 22] ep=10 log_prob=-6.148  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=10 lidar=[1.18,10.00] goal_dist=8.99m bear=-0.005rad
+  [Diag Actor 22] ep=10 log_prob=-2.638  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=10 lidar=[1.13,10.00] goal_dist=8.93m bear=-0.000rad
+  [Diag Actor 22] ep=10 log_prob=-15.009  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=10 lidar=[1.10,10.00] goal_dist=8.89m bear=-0.001rad
+  [Diag Actor 22] ep=10 log_prob=-0.687  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=10 lidar=[1.07,10.00] goal_dist=8.85m bear=-0.004rad
+  [Diag Actor 22] ep=10 log_prob=-1.868  (expected -20 to -5; NaN/±inf → sigma issue)
+  [Diag Actor 22] ep=10 lidar=[1.03,10.00] goal_dist=8.80m bear=0.001rad
+  [Diag Actor 22] ep=10 log_prob=-7.665  (expected -20 to -5; NaN/±inf → sigma issue)
